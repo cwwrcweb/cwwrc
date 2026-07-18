@@ -1,12 +1,13 @@
 /* ===================================
-CWWRC WEBSITE
-SCRIPT.JS
+   CWWRC WEBSITE
+   SCRIPT.JS
+   CLEAN VERSION
 =================================== */
 
 
 /* ===================================
-JS PART 1
-SETUP + VARIABLES
+   PART 1
+   SETUP + VARIABLES
 =================================== */
 
 
@@ -18,57 +19,95 @@ const header = document.querySelector("header");
 
 
 
-
 /* ===================================
-JS PART 2
-HAMBURGER MENU
+   PART 2
+   MOBILE MENU
 =================================== */
 
 
-menuToggle.addEventListener("click", () => {
+if(menuToggle && navMenu){
 
 
-    navMenu.classList.toggle("active");
+    menuToggle.addEventListener("click", () => {
 
 
-    if (navMenu.classList.contains("active")) {
+        navMenu.classList.toggle("active");
 
 
-        menuToggle.innerHTML = "✕";
+        const isActive = navMenu.classList.contains("active");
 
 
-    } else {
+        menuToggle.innerHTML = isActive ? "✕" : "☰";
 
 
-        menuToggle.innerHTML = "☰";
+        menuToggle.setAttribute(
+            "aria-expanded",
+            isActive
+        );
 
 
-    }
+    });
 
 
-});
 
+    // Close menu after clicking link
+
+    document.querySelectorAll("nav a").forEach(link => {
+
+
+        link.addEventListener("click", () => {
+
+
+            if(window.innerWidth <= 768){
+
+
+                navMenu.classList.remove("active");
+
+
+                menuToggle.innerHTML = "☰";
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+            }
+
+
+        });
+
+
+    });
+
+
+}
 
 
 
 /* ===================================
-JS PART 3
-CLOSE MENU AFTER CLICK
+   PART 3
+   HEADER SCROLL EFFECT
 =================================== */
 
 
-document.querySelectorAll("nav a").forEach(link => {
+if(header){
 
 
-    link.addEventListener("click", () => {
+    window.addEventListener("scroll", () => {
 
 
-        if (window.innerWidth <= 768) {
+        if(window.scrollY > 80){
 
 
-            navMenu.classList.remove("active");
+            header.classList.add("scrolled");
 
-            menuToggle.innerHTML = "☰";
+
+        }else{
+
+
+            header.classList.remove("scrolled");
 
 
         }
@@ -77,60 +116,26 @@ document.querySelectorAll("nav a").forEach(link => {
     });
 
 
-});
-
-
-
-
-/* ===================================
-JS PART 4
-HEADER SCROLL EFFECT
-=================================== */
-
-
-window.addEventListener("scroll", () => {
-
-
-    if (window.scrollY > 80) {
-
-
-        header.style.background = "rgba(0,0,0,0.95)";
-
-        header.style.boxShadow =
-        "0 5px 20px rgba(0,0,0,.35)";
-
-
-    } else {
-
-
-        header.style.background = "rgba(0,0,0,0.75)";
-
-        header.style.boxShadow = "none";
-
-
-    }
-
-
-});
-
+}
 
 
 
 /* ===================================
-JS PART 5
-BUTTON EFFECTS + RIPPLE EFFECT
+   PART 4
+   BUTTON RIPPLE EFFECT
 =================================== */
 
 
 document.querySelectorAll(".btn").forEach(button => {
 
 
-    button.addEventListener("click", function(e) {
+    button.addEventListener("click", function(e){
 
 
-        // Android Haptic Feedback
 
-        if (navigator.vibrate) {
+        // Android vibration
+
+        if(navigator.vibrate){
 
 
             navigator.vibrate(30);
@@ -140,8 +145,7 @@ document.querySelectorAll(".btn").forEach(button => {
 
 
 
-        // Ripple Effect
-
+        // Create ripple
 
         const circle = document.createElement("span");
 
@@ -161,9 +165,9 @@ document.querySelectorAll(".btn").forEach(button => {
 
 
 
-        circle.style.width = circle.style.height =
+        circle.style.width = `${diameter}px`;
 
-        `${diameter}px`;
+        circle.style.height = `${diameter}px`;
 
 
 
@@ -183,14 +187,14 @@ document.querySelectorAll(".btn").forEach(button => {
 
 
 
-        const ripple = this.querySelector(".ripple");
+        const oldRipple = this.querySelector(".ripple");
 
 
 
-        if (ripple) {
+        if(oldRipple){
 
 
-            ripple.remove();
+            oldRipple.remove();
 
 
         }
@@ -200,7 +204,23 @@ document.querySelectorAll(".btn").forEach(button => {
         this.appendChild(circle);
 
 
+
     });
 
 
 });
+
+
+
+/* ===================================
+   PART 5
+   FUTURE ANIMATION READY
+=================================== */
+
+
+// Future:
+// Scroll reveal animations
+// Gallery lightbox
+// Dark mode
+// Counter animations
+// Loading screen
