@@ -1,19 +1,31 @@
 /* ===================================
    CWWRC WEBSITE
-   SCRIPT.JS v2.0
+   SCRIPT.JS FINAL v3.0
+   PART 1/2
 =================================== */
 
 
+
 /* ================================
-   VARIABLES
+   ELEMENTS
 ================================ */
 
 
-const menuToggle = document.getElementById("menu-toggle");
+const menuToggle = document.getElementById(
+    "menu-toggle"
+);
 
-const navMenu = document.getElementById("nav-menu");
 
-const header = document.getElementById("header");
+const navMenu = document.getElementById(
+    "nav-menu"
+);
+
+
+const header = document.getElementById(
+    "header"
+);
+
+
 
 
 
@@ -27,25 +39,74 @@ const header = document.getElementById("header");
 if(menuToggle && navMenu){
 
 
-    menuToggle.addEventListener("click", ()=>{
+    menuToggle.addEventListener(
+        "click",
+        ()=>{
 
 
-        navMenu.classList.toggle("active");
-
-
-        const opened =
-        navMenu.classList.contains("active");
-
-
-
-        menuToggle.innerHTML =
-        opened ? "✕" : "☰";
+            navMenu.classList.toggle(
+                "active"
+            );
 
 
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            opened
+            const opened =
+            navMenu.classList.contains(
+                "active"
+            );
+
+
+
+            menuToggle.innerHTML =
+            opened ? "✕" : "☰";
+
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                opened
+            );
+
+
+
+        }
+    );
+
+
+
+
+
+
+    // Close menu after selecting link
+
+
+    document.querySelectorAll(
+        "nav a"
+    )
+    .forEach(link=>{
+
+
+        link.addEventListener(
+            "click",
+            ()=>{
+
+
+                navMenu.classList.remove(
+                    "active"
+                );
+
+
+                menuToggle.innerHTML =
+                "☰";
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+            }
         );
 
 
@@ -56,72 +117,53 @@ if(menuToggle && navMenu){
 
 
 
-    // Close menu when link clicked
-
-
-    document.querySelectorAll("nav a")
-    .forEach(link=>{
-
-
-        link.addEventListener("click", ()=>{
-
-
-            navMenu.classList.remove("active");
-
-
-            menuToggle.innerHTML="☰";
-
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-
-        });
-
-
-    });
-
-
-
-    // Close when clicking outside
+    // Close clicking outside
 
 
     document.addEventListener(
-    "click",
-    (event)=>{
+        "click",
+        (event)=>{
 
 
-        const clickedInside =
-        navMenu.contains(event.target)
-        ||
-        menuToggle.contains(event.target);
-
-
-
-        if(!clickedInside){
-
-
-            navMenu.classList.remove("active");
-
-
-            menuToggle.innerHTML="☰";
-
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
+            const inside =
+            navMenu.contains(
+                event.target
+            )
+            ||
+            menuToggle.contains(
+                event.target
             );
 
 
+
+            if(!inside){
+
+
+                navMenu.classList.remove(
+                    "active"
+                );
+
+
+                menuToggle.innerHTML =
+                "☰";
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+            }
+
+
         }
-
-
-    });
+    );
 
 
 }
+
+
 
 
 
@@ -137,33 +179,130 @@ if(header){
 
 
     window.addEventListener(
+        "scroll",
+        ()=>{
+
+
+            if(window.scrollY > 60){
+
+
+                header.classList.add(
+                    "scrolled"
+                );
+
+
+            }
+            else{
+
+
+                header.classList.remove(
+                    "scrolled"
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+}
+
+
+
+
+
+
+
+/* ================================
+   SMOOTH ACTIVE LINK
+================================ */
+
+
+const sections =
+document.querySelectorAll(
+    "section"
+);
+
+
+const navLinks =
+document.querySelectorAll(
+    "nav a"
+);
+
+
+
+window.addEventListener(
     "scroll",
     ()=>{
 
 
-        if(window.scrollY > 60){
+        let current = "";
 
 
-            header.classList.add(
-                "scrolled"
-            );
+
+        sections.forEach(
+            section=>{
 
 
-        }else{
+                const sectionTop =
+                section.offsetTop - 120;
 
 
-            header.classList.remove(
-                "scrolled"
-            );
+
+                if(
+                    scrollY >= sectionTop
+                ){
+
+                    current =
+                    section.getAttribute(
+                        "id"
+                    );
+
+                }
 
 
-        }
+            }
+        );
 
 
-    });
+
+        navLinks.forEach(
+            link=>{
 
 
-}
+                link.style.color =
+                "white";
+
+
+
+                if(
+                    link.getAttribute("href")
+                    ===
+                    "#" + current
+                ){
+
+
+                    link.style.color =
+                    "#d4af37";
+
+
+                }
+
+
+            }
+        );
+
+
+    }
+);
+
+/* ===================================
+   CWWRC WEBSITE
+   SCRIPT.JS FINAL v3.0
+   PART 2/2
+=================================== */
 
 
 
@@ -175,99 +314,107 @@ if(header){
 ================================ */
 
 
-document.querySelectorAll(".btn")
+document.querySelectorAll(
+    ".btn"
+)
 .forEach(button=>{
 
 
     button.addEventListener(
-    "click",
-    function(event){
+        "click",
+        function(event){
 
 
 
-        if(navigator.vibrate){
+            if(navigator.vibrate){
+
+                navigator.vibrate(30);
+
+            }
 
 
-            navigator.vibrate(30);
+
+
+
+            const ripple =
+            document.createElement(
+                "span"
+            );
+
+
+
+            const size =
+            Math.max(
+                this.offsetWidth,
+                this.offsetHeight
+            );
+
+
+
+            ripple.style.width =
+            size + "px";
+
+
+            ripple.style.height =
+            size + "px";
+
+
+
+            const rect =
+            this.getBoundingClientRect();
+
+
+
+            ripple.style.left =
+            event.clientX -
+            rect.left -
+            size / 2
+            + "px";
+
+
+
+            ripple.style.top =
+            event.clientY -
+            rect.top -
+            size / 2
+            + "px";
+
+
+
+            ripple.classList.add(
+                "ripple"
+            );
+
+
+
+            const oldRipple =
+            this.querySelector(
+                ".ripple"
+            );
+
+
+
+            if(oldRipple){
+
+                oldRipple.remove();
+
+            }
+
+
+
+            this.appendChild(
+                ripple
+            );
+
 
 
         }
-
-
-
-
-
-        const ripple =
-        document.createElement("span");
-
-
-
-        const size =
-        Math.max(
-            this.offsetWidth,
-            this.offsetHeight
-        );
-
-
-
-        ripple.style.width =
-        size + "px";
-
-
-        ripple.style.height =
-        size + "px";
-
-
-
-        const rect =
-        this.getBoundingClientRect();
-
-
-
-        ripple.style.left =
-        event.clientX -
-        rect.left -
-        size/2
-        + "px";
-
-
-
-        ripple.style.top =
-        event.clientY -
-        rect.top -
-        size/2
-        + "px";
-
-
-
-        ripple.classList.add(
-            "ripple"
-        );
-
-
-
-        const old =
-        this.querySelector(".ripple");
-
-
-
-        if(old){
-
-            old.remove();
-
-        }
-
-
-
-        this.appendChild(ripple);
-
-
-
-    });
-
+    );
 
 
 });
+
+
 
 
 
@@ -281,57 +428,70 @@ document.querySelectorAll(".btn")
 
 const revealItems =
 document.querySelectorAll(
-"section, .card, .gallery-item"
+    "section, .card, .gallery-item, .training-card, .highlight-box, .contact-card"
 );
+
+
 
 
 
 const revealObserver =
 new IntersectionObserver(
-(entries)=>{
+    (entries)=>{
 
 
-    entries.forEach(entry=>{
+        entries.forEach(
+            entry=>{
 
 
-        if(entry.isIntersecting){
+                if(
+                    entry.isIntersecting
+                ){
 
 
-            entry.target.classList.add(
-                "show"
-            );
+                    entry.target.classList.add(
+                        "show"
+                    );
 
 
-        }
+                }
 
 
-    });
+            }
+        );
+
+
+    },
+    {
+
+        threshold:0.15
+
+    }
+);
 
 
 
-},
-{
-
-    threshold:0.15
-
-});
 
 
 
-revealItems.forEach(item=>{
+revealItems.forEach(
+    item=>{
 
 
-    item.classList.add(
-        "reveal"
-    );
+        item.classList.add(
+            "reveal"
+        );
 
 
-    revealObserver.observe(
-        item
-    );
+        revealObserver.observe(
+            item
+        );
 
 
-});
+    }
+);
+
+
 
 
 
@@ -339,40 +499,76 @@ revealItems.forEach(item=>{
 
 
 /* ================================
-   ESC KEY CLOSE MENU
+   ESC CLOSE MENU
 ================================ */
 
 
 document.addEventListener(
-"keydown",
-(event)=>{
+    "keydown",
+    (event)=>{
 
 
-    if(event.key==="Escape"){
+        if(
+            event.key === "Escape"
+        ){
 
 
-        if(navMenu){
+            if(navMenu){
 
 
-            navMenu.classList.remove(
-                "active"
-            );
+                navMenu.classList.remove(
+                    "active"
+                );
 
 
-        }
+            }
 
 
 
-        if(menuToggle){
+            if(menuToggle){
 
 
-            menuToggle.innerHTML="☰";
+                menuToggle.innerHTML =
+                "☰";
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+            }
 
 
         }
 
 
     }
+);
 
 
-});
+
+
+
+
+
+
+/* ================================
+   IMAGE LOADING OPTIMIZATION
+================================ */
+
+
+document.querySelectorAll(
+    "img"
+)
+.forEach(
+    image=>{
+
+
+        image.loading =
+        "lazy";
+
+
+    }
+);
