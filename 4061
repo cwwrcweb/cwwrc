@@ -1,0 +1,378 @@
+/* ===================================
+   CWWRC WEBSITE
+   SCRIPT.JS v2.0
+=================================== */
+
+
+/* ================================
+   VARIABLES
+================================ */
+
+
+const menuToggle = document.getElementById("menu-toggle");
+
+const navMenu = document.getElementById("nav-menu");
+
+const header = document.getElementById("header");
+
+
+
+
+
+/* ================================
+   MOBILE MENU
+================================ */
+
+
+if(menuToggle && navMenu){
+
+
+    menuToggle.addEventListener("click", ()=>{
+
+
+        navMenu.classList.toggle("active");
+
+
+        const opened =
+        navMenu.classList.contains("active");
+
+
+
+        menuToggle.innerHTML =
+        opened ? "✕" : "☰";
+
+
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            opened
+        );
+
+
+    });
+
+
+
+
+
+
+    // Close menu when link clicked
+
+
+    document.querySelectorAll("nav a")
+    .forEach(link=>{
+
+
+        link.addEventListener("click", ()=>{
+
+
+            navMenu.classList.remove("active");
+
+
+            menuToggle.innerHTML="☰";
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+        });
+
+
+    });
+
+
+
+    // Close when clicking outside
+
+
+    document.addEventListener(
+    "click",
+    (event)=>{
+
+
+        const clickedInside =
+        navMenu.contains(event.target)
+        ||
+        menuToggle.contains(event.target);
+
+
+
+        if(!clickedInside){
+
+
+            navMenu.classList.remove("active");
+
+
+            menuToggle.innerHTML="☰";
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+        }
+
+
+    });
+
+
+}
+
+
+
+
+
+
+/* ================================
+   HEADER SCROLL EFFECT
+================================ */
+
+
+if(header){
+
+
+    window.addEventListener(
+    "scroll",
+    ()=>{
+
+
+        if(window.scrollY > 60){
+
+
+            header.classList.add(
+                "scrolled"
+            );
+
+
+        }else{
+
+
+            header.classList.remove(
+                "scrolled"
+            );
+
+
+        }
+
+
+    });
+
+
+}
+
+
+
+
+
+
+/* ================================
+   BUTTON RIPPLE EFFECT
+================================ */
+
+
+document.querySelectorAll(".btn")
+.forEach(button=>{
+
+
+    button.addEventListener(
+    "click",
+    function(event){
+
+
+
+        if(navigator.vibrate){
+
+
+            navigator.vibrate(30);
+
+
+        }
+
+
+
+
+
+        const ripple =
+        document.createElement("span");
+
+
+
+        const size =
+        Math.max(
+            this.offsetWidth,
+            this.offsetHeight
+        );
+
+
+
+        ripple.style.width =
+        size + "px";
+
+
+        ripple.style.height =
+        size + "px";
+
+
+
+        const rect =
+        this.getBoundingClientRect();
+
+
+
+        ripple.style.left =
+        event.clientX -
+        rect.left -
+        size/2
+        + "px";
+
+
+
+        ripple.style.top =
+        event.clientY -
+        rect.top -
+        size/2
+        + "px";
+
+
+
+        ripple.classList.add(
+            "ripple"
+        );
+
+
+
+        const old =
+        this.querySelector(".ripple");
+
+
+
+        if(old){
+
+            old.remove();
+
+        }
+
+
+
+        this.appendChild(ripple);
+
+
+
+    });
+
+
+
+});
+
+
+
+
+
+
+/* ================================
+   SCROLL REVEAL ANIMATION
+================================ */
+
+
+const revealItems =
+document.querySelectorAll(
+"section, .card, .gallery-item"
+);
+
+
+
+const revealObserver =
+new IntersectionObserver(
+(entries)=>{
+
+
+    entries.forEach(entry=>{
+
+
+        if(entry.isIntersecting){
+
+
+            entry.target.classList.add(
+                "show"
+            );
+
+
+        }
+
+
+    });
+
+
+
+},
+{
+
+    threshold:0.15
+
+});
+
+
+
+revealItems.forEach(item=>{
+
+
+    item.classList.add(
+        "reveal"
+    );
+
+
+    revealObserver.observe(
+        item
+    );
+
+
+});
+
+
+
+
+
+
+/* ================================
+   ESC KEY CLOSE MENU
+================================ */
+
+
+document.addEventListener(
+"keydown",
+(event)=>{
+
+
+    if(event.key==="Escape"){
+
+
+        if(navMenu){
+
+
+            navMenu.classList.remove(
+                "active"
+            );
+
+
+        }
+
+
+
+        if(menuToggle){
+
+
+            menuToggle.innerHTML="☰";
+
+
+        }
+
+
+    }
+
+
+});
