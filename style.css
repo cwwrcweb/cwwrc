@@ -427,6 +427,8 @@ nav a:hover::after{
 
 
 
+
+
 .hero h2{
 
     font-size:56px;
@@ -439,9 +441,12 @@ nav a:hover::after{
 
     margin-bottom:25px;
 
+    color:#d4af37;
+
+    text-shadow:
+    2px 2px 8px rgba(0,0,0,0.7);
+
 }
-
-
 
 
 
