@@ -1,0 +1,299 @@
+<!-- ===================================
+     CWWRC WEBSITE
+     TEAM PAGE
+=================================== -->
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Our Team | Ceylon Wudang Wushu Research Centre
+</title>
+
+
+<link rel="stylesheet" href="team.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="team-header">
+
+    <h1>
+        Our Team
+    </h1>
+
+
+    <p>
+        Leadership and Executive Committee
+    </p>
+
+
+</header>
+
+
+
+
+
+
+<!-- ================= LEADERSHIP TEAM ================= -->
+
+
+<section class="team-section">
+
+
+<div class="container">
+
+
+<h2>
+Leadership Team
+</h2>
+
+
+
+
+<div class="team-grid">
+
+
+
+<!-- MEMBER CARD -->
+
+<div class="team-card">
+
+<img src="assets/images/kapila.png"
+alt="Kapila">
+
+
+<h3>
+Mr. R,W,K,Rathnayake
+</h3>
+
+
+<p>
+Founder & President
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="team-card">
+
+<img src="assets/images/sanjana.png"
+alt="Sanjana">
+
+
+<h3>
+Mr. K,W,Kadadorawithana
+</h3>
+
+
+<p>
+Secretary
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="team-card">
+
+<img src="assets/images/jayantha.png"
+alt="Jayantha">
+
+
+<h3>
+Jayantha
+</h3>
+
+
+<p>
+Vice President
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="team-card">
+
+<img src="assets/images/waruna.png"
+alt="Waruna">
+
+
+<h3>
+Waruna
+</h3>
+
+
+<p>
+Deputy Secretary
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= EXECUTIVE COMMITTEE ================= -->
+
+
+<section class="team-section">
+
+
+<div class="container">
+
+
+<h2>
+Executive Committee
+</h2>
+
+
+
+<div class="team-grid">
+
+
+
+<!-- 
+Copy this card when adding new members
+Only change image, name and position
+-->
+
+
+<!-- copy this to add new membet card-->
+<div class="team-card">
+
+<img src="assets/images/e1.png"
+alt="Mr.Janaka gunawardhana">
+
+
+<h3>
+Mr.Janaka gunawardana
+</h3>
+
+
+<p>
+Executive Committee Member
+</p>
+
+
+</div>
+
+<!--end of card-->
+<!--========================-->
+<div class="team-card">
+
+<img src="assets/images/e2.png"
+alt="Mr.Amila">
+
+
+<h3>
+Mr.Amila
+</h3>
+
+
+<p>
+Executive Committee Member
+</p>
+
+
+</div>
+<!--========================-->
+<div class="team-card">
+
+<img src="assets/images/e3.png"
+alt="Mr.Asanka">
+
+
+<h3>
+Mr.Asanka
+</h3>
+
+
+<p>
+Executive Committee Member
+</p>
+
+
+</div>
+<!--========================-->
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer>
+
+<p>
+© 2026 Ceylon Wudang Wushu Research Centre
+</p>
+
+</footer>
+
+
+
+
+
+<script src="team.js"></script>
+
+
+
+</body>
+
+
+</html>
