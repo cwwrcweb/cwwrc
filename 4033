@@ -1,0 +1,1180 @@
+<!-- ===================================
+     CWWRC WEBSITE
+     INDEX.HTML v4.0
+     PART 1/3
+=================================== -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Ceylon Wudang Wushu Research Centre | CWWRC
+</title>
+
+
+<meta name="description"
+content="Ceylon Wudang Wushu Research Centre - Researching Wudang Martial Arts, Sri Lankan Ayurveda, Meditation, Traditional Knowledge and Cultural Heritage.">
+
+
+<meta name="keywords"
+content="CWWRC, Wudang Wushu, Martial Arts, Ayurveda, Meditation, Sri Lankan Culture, Traditional Research">
+
+
+<meta name="author"
+content="Ceylon Wudang Wushu Research Centre">
+
+
+<meta name="theme-color"
+content="#111111">
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+
+<header id="header">
+
+
+<div class="logo">
+
+<a href="#hero">
+
+<img src="images/logo.png"
+alt="CWWRC Logo">
+
+</a>
+
+</div>
+
+
+
+
+<h1>
+Ceylon Wudang Wushu Research Centre
+</h1>
+
+
+
+
+<button 
+class="menu-toggle"
+id="menu-toggle"
+aria-label="Open Navigation"
+aria-expanded="false">
+
+☰
+
+</button>
+
+
+
+
+
+<nav id="nav-menu">
+
+
+<ul>
+
+
+<li>
+<a href="#hero">
+Home
+</a>
+</li>
+
+
+
+<li>
+<a href="#about">
+About
+</a>
+</li>
+
+
+
+<li>
+<a href="team/team.html">
+Team
+</a>
+</li>
+
+
+
+<li>
+<a href="#research">
+Research
+</a>
+</li>
+
+
+
+<li>
+<a href="#training">
+Training
+</a>
+</li>
+
+
+
+<li>
+<a href="#ayurveda">
+Ayurveda
+</a>
+</li>
+
+
+
+<li>
+<a href="culture/culture.html">
+Sri Lankan Heritage
+</a>
+</li>
+
+
+
+<li>
+<a href="#gallery">
+Gallery
+</a>
+</li>
+
+
+
+<li>
+<a href="#contact">
+Contact
+</a>
+</li>
+
+
+</ul>
+
+
+</nav>
+
+
+
+</header>
+
+
+
+
+
+
+<!-- ================= HERO SECTION ================= -->
+
+
+<section
+id="hero"
+class="hero">
+
+
+
+<img
+
+src="images/hero.png"
+
+class="hero-image"
+
+alt="Wudang Martial Arts and Traditional Wisdom"
+
+>
+
+
+
+
+<div class="hero-overlay"></div>
+
+
+
+
+
+<div class="hero-content">
+
+
+<h2>
+
+Traditional Wisdom
+<br>
+For
+<br>
+Modern Generations
+
+</h2>
+
+
+
+
+
+<p>
+
+Research • Martial Arts • Ayurveda • Meditation • Cultural Heritage
+
+</p>
+
+
+
+
+
+
+<div class="hero-buttons">
+
+
+
+<a href="#research"
+class="btn primary-btn">
+
+Explore Research
+
+</a>
+
+
+
+
+
+<a href="#contact"
+class="btn secondary-btn">
+
+Join The Centre
+
+</a>
+
+
+
+
+
+<a href="culture/culture.html"
+class="btn heritage-btn">
+
+🇱🇰 Explore Sri Lankan Heritage
+
+</a>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="scroll-indicator">
+
+↓
+
+</div>
+
+
+
+
+</section>
+
+<!-- ================= ABOUT SECTION ================= -->
+
+
+<section 
+id="about"
+class="about">
+
+
+<div class="container">
+
+
+<h2>
+About The Centre
+</h2>
+
+
+
+<p>
+
+The Ceylon Wudang Wushu Research Centre is dedicated to preserving,
+researching and promoting Wudang Martial Arts, Traditional Sri Lankan
+Ayurveda, Meditation, Traditional Healing and Cultural Heritage.
+Through research and practice, the Centre connects ancient wisdom
+with modern generations.
+
+</p>
+
+
+
+
+
+<div class="about-highlights">
+
+
+
+<div class="highlight-box">
+
+<h3>
+🥋 Martial Arts
+</h3>
+
+<p>
+Research and preservation of traditional Wudang internal martial arts,
+philosophy, discipline and training methods.
+</p>
+
+</div>
+
+
+
+
+
+<div class="highlight-box">
+
+<h3>
+🌿 Ayurveda
+</h3>
+
+<p>
+Exploring Sri Lankan traditional healing systems,
+herbal knowledge and natural wellness practices.
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="highlight-box">
+
+<h3>
+🧘 Meditation
+</h3>
+
+<p>
+Study of meditation, breathing practices,
+mind cultivation and inner balance.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= RESEARCH SECTION ================= -->
+
+
+<section 
+id="research"
+class="research">
+
+
+<div class="container">
+
+
+<h2>
+Our Research
+</h2>
+
+
+
+
+<p class="section-intro">
+
+Exploring ancient knowledge systems through research,
+practice, documentation and preservation.
+
+</p>
+
+
+
+
+
+<div class="cards">
+
+
+
+<article class="card">
+
+
+<div class="card-icon">
+🥋
+</div>
+
+
+
+<h3>
+Wudang Martial Arts
+</h3>
+
+
+<p>
+
+Research on internal martial arts,
+history, philosophy, traditional training
+and cultural values.
+
+</p>
+
+
+
+<a href="#"
+class="card-link">
+
+Learn More
+
+</a>
+
+
+</article>
+
+
+
+
+
+
+<article class="card">
+
+
+<div class="card-icon">
+🌿
+</div>
+
+
+
+<h3>
+Ayurveda
+</h3>
+
+
+<p>
+
+Research on Sri Lankan Ayurveda,
+medicinal plants, traditional healing
+and holistic wellness.
+
+</p>
+
+
+
+<a href="#"
+class="card-link">
+
+Learn More
+
+</a>
+
+
+</article>
+
+
+
+
+
+
+<article class="card">
+
+
+<div class="card-icon">
+🧘
+</div>
+
+
+
+<h3>
+Meditation
+</h3>
+
+
+<p>
+
+Research on meditation,
+breathing techniques, energy cultivation
+and mental development.
+
+</p>
+
+
+
+<a href="#"
+class="card-link">
+
+Learn More
+
+</a>
+
+
+</article>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= TRAINING SECTION ================= -->
+
+
+<section 
+id="training"
+class="training">
+
+
+<div class="container">
+
+
+<h2>
+Training Programmes
+</h2>
+
+
+
+
+<p class="section-intro">
+
+Structured training programmes designed to develop
+discipline, physical ability, internal cultivation
+and traditional knowledge.
+
+</p>
+
+
+
+
+
+<div class="training-grid">
+
+
+
+<div class="training-card">
+
+<h3>
+Beginner Programme
+</h3>
+
+<p>
+
+Foundation training including basic movements,
+discipline and traditional principles.
+
+</p>
+
+</div>
+
+
+
+
+
+<div class="training-card">
+
+<h3>
+Intermediate Programme
+</h3>
+
+<p>
+
+Development of techniques, forms,
+conditioning and deeper practice.
+
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="training-card">
+
+<h3>
+Advanced Programme
+</h3>
+
+<p>
+
+Advanced martial training,
+internal cultivation and research-based practice.
+
+</p>
+
+</div>
+
+
+
+
+
+
+
+<div class="training-card">
+
+<h3>
+Instructor Programme
+</h3>
+
+<p>
+
+Developing future instructors through knowledge,
+leadership and teaching methods.
+
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= AYURVEDA SECTION ================= -->
+
+
+<section 
+id="ayurveda"
+class="ayurveda">
+
+
+<div class="container">
+
+
+<h2>
+Ayurveda & Wellness
+</h2>
+
+
+
+
+<p class="section-intro">
+
+Integrating Traditional Sri Lankan Ayurveda
+with Wudang health preservation methods
+for physical, mental and holistic wellbeing.
+
+</p>
+
+
+
+
+
+
+<div class="ayurveda-content">
+
+
+<h3>
+Traditional Healing Research
+</h3>
+
+
+
+<p>
+
+Our research focuses on preventive healthcare,
+herbal knowledge, traditional healing methods,
+rehabilitation and holistic wellness through
+ancient wisdom and modern research.
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- ===================================
+   SRI LANKAN HERITAGE PREVIEW SECTION
+=================================== -->
+
+
+<section class="heritage-preview">
+
+
+<div class="container">
+
+
+<h2>
+Sri Lankan Heritage
+</h2>
+
+
+
+<p class="section-intro">
+
+Discover the timeless heritage of Sri Lanka —
+from ancient civilizations, traditional healing,
+martial arts, spirituality and cultural wisdom
+that continues to inspire the world.
+
+</p>
+
+
+
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+
+<div class="card-icon">
+🏛️
+</div>
+
+
+<h3>
+Ancient Civilization
+</h3>
+
+
+<p>
+
+Explore ancient kingdoms, architecture,
+engineering wonders and historical traditions
+of Sri Lanka.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+<div class="card-icon">
+🌿
+</div>
+
+
+<h3>
+Healing Traditions
+</h3>
+
+
+<p>
+
+Discover Ayurveda, indigenous medicine,
+herbal knowledge and holistic wellness systems.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<div class="card-icon">
+⚔️
+</div>
+
+
+<h3>
+Warrior Heritage
+</h3>
+
+
+<p>
+
+Learn about Angampora,
+traditional discipline and Sri Lankan combat heritage.
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<a href="culture/culture.html"
+class="btn heritage-btn">
+
+Explore Full Heritage
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- ================= GALLERY SECTION ================= -->
+
+
+<section 
+id="gallery"
+class="gallery">
+
+
+<div class="container">
+
+
+<h2>
+Gallery
+</h2>
+
+
+
+
+<p class="section-intro">
+
+Explore moments from our research activities,
+training programmes, workshops and traditional
+knowledge studies.
+
+</p>
+
+
+
+
+
+
+<div class="gallery-grid">
+
+
+
+<div class="gallery-item sticker-box">
+
+
+<img 
+src="images/gallery/wud.png"
+class="gallery-sticker"
+alt="Wudang Martial Arts">
+
+
+<h3>
+Wudang Martial Arts
+</h3>
+
+
+<p>
+Internal Martial Arts Research
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="gallery-item sticker-box">
+
+
+<img 
+src="images/gallery/ayu.png"
+class="gallery-sticker"
+alt="Ayurveda">
+
+
+<h3>
+Ayurveda
+</h3>
+
+
+<p>
+Traditional Healing Knowledge
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="gallery-item sticker-box">
+
+
+<img 
+src="images/gallery/ang.png"
+class="gallery-sticker"
+alt="Angampora">
+
+
+<h3>
+Angampora
+</h3>
+
+
+<p>
+Sri Lankan Traditional Combat Art
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="gallery-item sticker-box">
+
+
+<img 
+src="images/gallery/yog.png"
+class="gallery-sticker"
+alt="Meditation">
+
+
+<h3>
+Meditation
+</h3>
+
+
+<p>
+Body & Mind Development
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= CONTACT SECTION ================= -->
+
+
+<section 
+id="contact"
+class="contact">
+
+
+<div class="container">
+
+
+<h2>
+Contact Us
+</h2>
+
+
+
+
+<p class="section-intro">
+
+We welcome researchers, students,
+practitioners and collaborators interested
+in preserving traditional knowledge.
+
+</p>
+
+
+
+
+
+
+<div class="contact-grid">
+
+
+
+<div class="contact-card">
+
+<h3>
+📧 Email
+</h3>
+
+<p>
+cwwrcweb@gmail.com
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="contact-card">
+
+<h3>
+🌐 Facebook
+</h3>
+
+<p>
+CWWRC
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="contact-card">
+
+<h3>
+📍 Location
+</h3>
+
+<p>
+Sri Lanka
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer>
+
+
+<div class="container">
+
+
+<p>
+
+© 2026 Ceylon Wudang Wushu Research Centre.
+<br>
+All Rights Reserved.
+
+</p>
+
+
+</div>
+
+
+</footer>
+
+
+
+
+
+
+
+<!-- ================= SCRIPT ================= -->
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>
