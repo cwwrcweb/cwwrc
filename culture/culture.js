@@ -85,20 +85,19 @@ images.forEach(image => {
 
 
 // ================================
-// CURRENT YEAR AUTO UPDATE
+// Footer
 // ================================
 
-const yearElement = document.querySelector("footer p");
+<footer>
 
+<p>
 
-if(yearElement){
+© 2026 Ceylon Wudang Wushu Research Centre
 
-    const currentYear = new Date().getFullYear();
+<br>
 
-    yearElement.innerHTML =
-    yearElement.innerHTML.replace(
-        "2026",
-        currentYear
-    );
+Sri Lankan Cultural Heritage Research
 
-}
+</p>
+
+</footer>
