@@ -1,0 +1,357 @@
+<!-- ===================================
+     CWWRC KNOWLEDGE BASE
+     BLOG.HTML v2.0
+=================================== -->
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+
+CWWRC Knowledge Base
+
+</title>
+
+
+
+<link rel="stylesheet" href="../../style.css">
+
+
+
+<style>
+
+/*=======Small Home Button=======*/
+
+
+.small-home-btn{
+
+    background:#d4af37;
+
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:25px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+.small-home-btn:hover{
+
+    background:#b8860b;
+
+    transform:translateY(-3px);
+
+}
+
+
+/*========end=========*/
+
+
+</style>
+
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+
+
+<!-- ================= HEADER ================= -->
+
+
+<header id="header">
+
+
+
+<div class="logo">
+
+
+<a href="../../index.html">
+
+
+<img src="../../images/logo.png"
+
+alt="CWWRC Logo">
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+<h1>
+
+CWWRC Knowledge Base
+
+</h1>
+
+
+
+
+
+
+<!--=======Home Button=======-->
+
+
+<a href="../../index.html"
+
+class="small-home-btn">
+
+
+Home
+
+
+</a>
+
+
+<!--========end=========-->
+
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<!-- ================= HERO ================= -->
+
+
+<section class="hero">
+
+
+
+<img src="../../images/hero.png"
+
+class="hero-image"
+
+alt="Knowledge Base">
+
+
+
+
+<div class="hero-overlay"></div>
+
+
+
+
+
+
+<div class="hero-content">
+
+
+
+<h2>
+
+Knowledge
+
+<br>
+
+Base
+
+</h2>
+
+
+
+
+
+
+<p>
+
+Research • Articles • Traditional Wisdom • Documentation
+
+</p>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= ARTICLES ================= -->
+
+
+<section class="research">
+
+
+
+<div class="container">
+
+
+
+<h2>
+
+Knowledge Base Articles
+
+</h2>
+
+
+
+
+
+<p class="section-intro">
+
+Explore research documents, traditional knowledge
+and educational articles preserved by CWWRC.
+
+</p>
+
+
+
+
+
+
+
+
+<div class="cards">
+
+
+
+
+
+
+
+<!--=======Article.001=======-->
+<article class="card">
+<div class="card-icon">
+📄
+</div>
+<h3>
+ola leaf manuscripts
+</h3>
+<p>
+Introduction to Tradition of ola leaf manuscripts
+</p>
+<a href="articles/article1.pdf"
+class="card-link">
+Open PDF
+</a>
+</article>
+<!--========end=========-->
+
+
+
+
+
+
+
+
+
+<!--=======Article2=======-->
+
+
+<!--========end=========-->
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+
+<footer>
+
+
+
+<div class="container">
+
+
+
+<p>
+
+© 2026 Ceylon Wudang Wushu Research Centre.
+
+<br>
+
+All Rights Reserved.
+
+
+</p>
+
+
+
+</div>
+
+
+
+</footer>
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
