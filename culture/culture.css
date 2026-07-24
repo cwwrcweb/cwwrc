@@ -478,28 +478,20 @@ img{
 
 .heritage-image{
 
+    width:100%;
+    height:380px;
     overflow:hidden;
-
     border-radius:25px;
-
-    box-shadow:
-
-    var(--shadow);
+    box-shadow:var(--shadow);
 
 }
-
-
-
 
 
 .heritage-image img{
 
     width:100%;
-
-    height:380px;
-
+    height:100%;
     object-fit:cover;
-
     transition:.5s;
 
 }
