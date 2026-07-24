@@ -476,36 +476,52 @@ img{
 ================================ */
 
 
+/* ================================
+   IMAGE DESIGN - AUTO FIT
+================================ */
+
+
 .heritage-image{
 
     width:100%;
+
     height:380px;
+
     overflow:hidden;
+
     border-radius:25px;
+
     box-shadow:var(--shadow);
 
+    position:relative;
+
 }
+
 
 
 .heritage-image img{
 
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
+    object-position:center;
+
+    display:block;
+
     transition:.5s;
 
 }
 
 
 
-
-
 .heritage-image:hover img{
 
-    transform:scale(1.08);
+    transform:scale(1.05);
 
 }
-
 
 
 
