@@ -405,25 +405,27 @@ function drawBackground() {
     ctx.fillRect(0, 0, 800, 300);
     let p = bgMove % 800;
     ctx.font = "90px Arial";
-    ctx.fillText("⛰️", 50 - p, 140);
+    ctx.fillText("🏔️", 50 - p, 140);
     ctx.fillText("⛰️", 700 - p, 140);
     ctx.font = "100px Arial";
-    ctx.fillText("🌲", 120 - p, 230);
+    ctx.fillText("🌳", 120 - p, 230);
     ctx.fillText("🌲", 580 - p, 230);
     ctx.font = "85px Arial";
     ctx.fillText("🏯", 330 - p, 190);
     ctx.font = "55px Arial";
     ctx.fillText("☁️", 500 - p, 110);
+    ctx.font = "32px Arial";
+    ctx.fillText("🛸", 500 + p, 110);
     bgMove += 0.5;
 }
 
 function drawPlayer() {
     ctx.globalAlpha = invincible && Math.floor(Date.now() / 150) % 2 == 0 ? 0.4 : 1;
     ctx.font = "60px Arial";
-    let char = "🥋";
-    if (qiShield) char = "🐉";
-    else if (qiEnergy > 70) char = "⚔️";
-    else if (qiEnergy > 30) char = "🧘";
+    let char = "🧚";
+    if (qiShield) char = "🧚‍";
+    else if (qiEnergy > 70) char = "🧚‍♂️";
+    else if (qiEnergy > 30) char = "🧚‍♂️";
     ctx.fillText(char, player.x, player.y + 60);
     ctx.globalAlpha = 1;
 }
@@ -537,7 +539,7 @@ function draw() {
         ctx.font = "35px Arial";
         ctx.shadowColor = "#00ffff";
         ctx.shadowBlur = 20;
-        ctx.fillText("☯", q.x, q.y + 30);
+        ctx.fillText("☯️", q.x, q.y + 30);
         ctx.shadowBlur = 0;
     });
     drawEnergyWave();
