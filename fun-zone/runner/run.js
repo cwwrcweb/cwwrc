@@ -254,6 +254,8 @@ localStorage.setItem(
 highScore
 );
 
+document.getElementById("high-score").innerText=highScore;
+
 }
 
 
