@@ -1,7 +1,7 @@
 /* ===================================
    CWWRC FUN ZONE
    WUDANG RUNNER
-   RUN.CSS v3.6
+   RUN.CSS v4.0
 =================================== */
 
 
@@ -91,101 +91,68 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    justify-content: center;
+    gap: 1px;
     min-width: 120px;
+    height: 48px;
+    max-height: 48px;
+    position: relative;
+    flex-shrink: 0;
 }
 
 #lives-display {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
     line-height: 1.2;
-    min-width: 80px;
     letter-spacing: 2px;
+    height: 26px;
 }
 
 
-/* ========== NOTIFICATION - NO TEXT OVERFLOW ========== */
+/* ========== NOTIFICATION - Lives එකට පහළින් ========== */
 
 #notification-msg {
-    font-size: 0.65rem !important;
+    font-size: 0.55rem !important;
     font-weight: bold;
-    padding: 2px 12px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.65);
+    padding: 1px 12px;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.7);
     border: 1.5px solid #00ffff;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.12);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     opacity: 0;
-    transform: translateY(-4px) scale(0.95);
+    transform: scale(0.92) translateY(-4px);
+    pointer-events: none;
     text-shadow: 0 0 8px currentColor;
     white-space: nowrap;
     text-align: center;
     color: #00ffff;
-    min-width: 80px;
-    max-width: 180px;
-    height: 22px;
-    line-height: 22px;
-    letter-spacing: 0.3px;
+    min-width: 50px;
+    max-width: 140px;
+    height: 20px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
     overflow: visible;
     flex-shrink: 0;
 }
 
 #notification-msg.show {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1) translateY(0);
 }
 
 /* Notification Colors */
-#notification-msg.qi {
-    border-color: #00ffff;
-    color: #00ffff;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.12), inset 0 0 12px rgba(0, 255, 255, 0.02);
-}
-
-#notification-msg.shield {
-    border-color: #ffd700;
-    color: #ffd700;
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.12), inset 0 0 12px rgba(255, 215, 0, 0.02);
-}
-
-#notification-msg.life {
-    border-color: #ff6b6b;
-    color: #ff6b6b;
-    box-shadow: 0 0 12px rgba(255, 107, 107, 0.12), inset 0 0 12px rgba(255, 107, 107, 0.02);
-}
-
-#notification-msg.speed {
-    border-color: #ffd700;
-    color: #ffd700;
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.12), inset 0 0 12px rgba(255, 215, 0, 0.02);
-}
-
-#notification-msg.wave {
-    border-color: #a29bfe;
-    color: #a29bfe;
-    box-shadow: 0 0 12px rgba(162, 155, 254, 0.12), inset 0 0 12px rgba(162, 155, 254, 0.02);
-}
-
-#notification-msg.destroy {
-    border-color: #ffd700;
-    color: #ffd700;
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.15), inset 0 0 12px rgba(255, 215, 0, 0.02);
-}
-
-#notification-msg.error {
-    border-color: #ff4757;
-    color: #ff4757;
-    box-shadow: 0 0 12px rgba(255, 71, 87, 0.12), inset 0 0 12px rgba(255, 71, 87, 0.02);
-}
-
-#notification-msg.attack {
-    border-color: #ff6b6b;
-    color: #ff6b6b;
-    box-shadow: 0 0 12px rgba(255, 107, 107, 0.12), inset 0 0 12px rgba(255, 107, 107, 0.02);
-}
+#notification-msg.qi { border-color: #00ffff; color: #00ffff; }
+#notification-msg.shield { border-color: #ffd700; color: #ffd700; }
+#notification-msg.life { border-color: #ff6b6b; color: #ff6b6b; }
+#notification-msg.speed { border-color: #ffd700; color: #ffd700; }
+#notification-msg.wave { border-color: #a29bfe; color: #a29bfe; }
+#notification-msg.destroy { border-color: #ffd700; color: #ffd700; }
+#notification-msg.error { border-color: #ff4757; color: #ff4757; }
+#notification-msg.attack { border-color: #ff6b6b; color: #ff6b6b; }
 
 
 /* ========== ATTACK DISPLAY ========== */
@@ -366,20 +333,23 @@ footer p {
         min-height: 38px;
     }
 
-    #lives-display {
-        font-size: 1.3rem;
-    }
-
     .lives-container {
         min-width: 100px;
+        height: 42px;
+        max-height: 42px;
+    }
+
+    #lives-display {
+        font-size: 1.3rem;
+        height: 22px;
     }
 
     #notification-msg {
-        font-size: 0.6rem !important;
-        min-width: 65px;
-        max-width: 150px;
-        height: 20px;
-        line-height: 20px;
+        font-size: 0.5rem !important;
+        min-width: 45px;
+        max-width: 120px;
+        height: 18px;
+        line-height: 18px;
         padding: 1px 10px;
     }
 
@@ -427,19 +397,22 @@ footer p {
 
     .lives-container {
         min-width: 85px;
-        gap: 1px;
+        height: 38px;
+        max-height: 38px;
+        gap: 0px;
     }
 
     #lives-display {
         font-size: 1.1rem;
+        height: 20px;
     }
 
     #notification-msg {
-        font-size: 0.55rem !important;
-        min-width: 55px;
-        max-width: 120px;
-        height: 18px;
-        line-height: 18px;
+        font-size: 0.45rem !important;
+        min-width: 40px;
+        max-width: 100px;
+        height: 16px;
+        line-height: 16px;
         padding: 1px 8px;
         border-radius: 10px;
     }
@@ -499,23 +472,27 @@ footer p {
 
     .lives-container {
         min-width: 70px;
-        gap: 1px;
+        height: 32px;
+        max-height: 32px;
+        gap: 0px;
     }
 
     #lives-display {
         font-size: 0.9rem;
+        height: 17px;
+        letter-spacing: 1px;
     }
 
     #notification-msg {
-        font-size: 0.5rem !important;
-        min-width: 45px;
-        max-width: 95px;
-        height: 16px;
-        line-height: 16px;
+        font-size: 0.4rem !important;
+        min-width: 35px;
+        max-width: 80px;
+        height: 14px;
+        line-height: 14px;
         padding: 1px 6px;
         border-radius: 8px;
         border-width: 1px;
-        letter-spacing: 0.2px;
+        letter-spacing: 0.1px;
     }
 
     #attack-display {
