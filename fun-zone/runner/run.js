@@ -1,342 +1,212 @@
-/* ===================================
-   CWWRC FUN ZONE
-   RUN.JS ALPHA v1.0
-   PART 1A
-=================================== */
+const canvas=document.getElementById("gameCanvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=800;
+canvas.height=300;
+
+let gameState="READY";
+let score=0;
+let speed=6;
+let bgMove=0;
+
+let highScore=localStorage.getItem("wudangHighScore")||0;
+document.getElementById("high-score").innerText=highScore;
 
 
-/* ================================
-   ENGINE
-================================ */
-
-"use strict";
-
-const FUN = {
-
-version : "1.0 Alpha",
-
-particles : [],
-
-fireworks : [],
-
-stars : [],
-
-mouse : {
-
-x : 0,
-
-y : 0
-
-},
-
-width : window.innerWidth,
-
-height : window.innerHeight
-
+const player={
+x:80,
+y:170,
+w:80,
+h:80,
+v:0
 };
 
 
+let obstacles=[];
+let herbs=[];
+let timer=0;
 
 
-/* ================================
-   RANDOM WELCOME
-================================ */
-
-const greetings = [
-
-"🥋 Welcome to CWWRC Fun Zone",
-
-"🌿 Ancient Wisdom Begins Here",
-
-"⚔️ Prepare For Adventure",
-
-"🧘 Balance • Knowledge • Fun",
-
-"🎮 Have A Great Time"
-
+const obs=[
+"🗼","🚓","🚕","🚛","🚜",
+"🏎️","🏍️","🛵","🚲","🛴","🚙"
 ];
 
 
-window.addEventListener(
 
-"load",
+function drawBackground(){
 
-()=>{
+ctx.fillStyle="#111";
+ctx.fillRect(0,0,800,300);
 
-console.log(
-
-"Fun Zone Loaded"
-
-);
-
-welcome();
-
-createCanvas();
-
-createStars();
-
-animate();
-
-}
-
-);
+let p=bgMove%800;
 
 
+ctx.font="90px Arial";
+ctx.fillText("⛰️",50-p,140);
+ctx.fillText("⛰️",700-p,140);
 
 
-
-function welcome(){
-
-const box = document.createElement(
-
-"div"
-
-);
-
-box.innerHTML=
-
-greetings[
-
-Math.floor(
-
-Math.random()
-
-*
-
-greetings.length
-
-)
-
-];
+ctx.font="100px Arial";
+ctx.fillText("🌲",120-p,230);
+ctx.fillText("🌲",580-p,230);
 
 
-box.style.position="fixed";
+ctx.font="85px Arial";
+ctx.fillText("🏯",330-p,190);
 
-box.style.top="40px";
 
-box.style.left="50%";
+ctx.font="55px Arial";
+ctx.fillText("🚁",220-p,90);
+ctx.fillText("☁️",500-p,110);
 
-box.style.transform="translateX(-50%)";
 
-box.style.background="#111";
-
-box.style.color="#fff";
-
-box.style.padding="15px 30px";
-
-box.style.border="2px solid gold";
-
-box.style.borderRadius="40px";
-
-box.style.zIndex="99999";
-
-box.style.fontWeight="bold";
-
-box.style.boxShadow="0 0 30px gold";
-
-box.style.transition="1s";
-
-document.body.appendChild(
-
-box
-
-);
-
-setTimeout(
-
-()=>{
-
-box.style.opacity="0";
-
-},
-
-3000
-
-);
-
-setTimeout(
-
-()=>{
-
-box.remove();
-
-},
-
-4500
-
-);
+bgMove+=0.5;
 
 }
 
 
 
+function drawPlayer(){
 
-/* ================================
-   CANVAS
-================================ */
-
-let canvas;
-
-let ctx;
-
-function createCanvas(){
-
-canvas=document.createElement(
-
-"canvas"
-
-);
-
-ctx=canvas.getContext(
-
-"2d"
-
-);
-
-canvas.width=FUN.width;
-
-canvas.height=FUN.height;
-
-canvas.style.position="fixed";
-
-canvas.style.left="0";
-
-canvas.style.top="0";
-
-canvas.style.pointerEvents="none";
-
-canvas.style.zIndex="1";
-
-document.body.appendChild(
-
-canvas
-
-);
+ctx.font="60px Arial";
+ctx.fillText("🧚",player.x,player.y+60);
 
 }
 
 
 
+function jump(){
 
-/* ================================
-   STARS
-================================ */
+if(player.y==170)
+player.v=-14;
 
-function createStars(){
+}
 
-for(
 
-let i=0;
+document.addEventListener("keydown",e=>{
+if(e.code=="Space")jump();
+});
 
-i<120;
+canvas.addEventListener("touchstart",jump);
 
-i++
 
-){
 
-FUN.stars.push({
+function createObstacle(){
 
-x:Math.random()*FUN.width,
+obstacles.push({
+x:800,
+y:205,
+w:55,
+h:55,
+e:obs[Math.floor(Math.random()*obs.length)]
+});
 
-y:Math.random()*FUN.height,
+}
 
-r:Math.random()*2,
 
-a:Math.random(),
 
-s:Math.random()*0.02
+function createHerb(){
+
+herbs.push({
+x:800,
+y:130,
+w:35,
+h:35
+});
+
+}
+
+
+
+function update(){
+
+timer++;
+
+if(timer>120){
+
+createObstacle();
+timer=0;
+
+}
+
+
+if(Math.random()<0.02)
+createHerb();
+
+
+
+obstacles.forEach(o=>o.x-=speed);
+herbs.forEach(h=>h.x-=speed);
+
+
+
+player.v+=0.8;
+player.y+=player.v;
+
+
+if(player.y>170){
+
+player.y=170;
+player.v=0;
+
+}
+
+}
+
+
+
+function draw(){
+
+obstacles.forEach(o=>{
+
+ctx.font="50px Arial";
+ctx.fillText(o.e,o.x,o.y+50);
+
+});
+
+
+herbs.forEach(h=>{
+
+ctx.font="35px Arial";
+ctx.fillText("✨️",h.x,h.y+30);
 
 });
 
 }
 
-}
 
 
+function collect(){
 
-
-/* ================================
-   ANIMATION LOOP
-================================ */
-
-function animate(){
-
-requestAnimationFrame(
-
-animate
-
-);
-
-ctx.clearRect(
-
-0,
-
-0,
-
-FUN.width,
-
-FUN.height
-
-);
-
-drawStars();
-
-}
-
-
-
-
-/* ================================
-   DRAW STARS
-================================ */
-
-function drawStars(){
-
-FUN.stars.forEach(
-
-star=>{
-
-star.a+=star.s;
+herbs.forEach((h,i)=>{
 
 if(
-
-star.a>1||
-
-star.a<0
-
+player.x<h.x+h.w &&
+player.x+player.w>h.x &&
+player.y<h.y+h.h &&
+player.y+player.h>h.y
 ){
 
-star.s*=-1;
+herbs.splice(i,1);
+score+=50;
 
 }
 
-ctx.beginPath();
-
-ctx.arc(
-
-star.x,
-
-star.y,
-
-star.r,
-
-0,
-
-Math.PI*2
-
-);
-
-ctx.fillStyle=
-
-"rgba(255,215,0,"+
-
-star.a+
-
-")";
-
-ctx.fill();
+});
 
 }
+
+
+
+function hit(){
+
+return obstacles.some(o=>
+
+player.x+15<o.x+o.w &&
+player.x+player.w-15>o.x &&
+player.y+15<o.y+o.h &&
+player.y+player.h>o.y
 
 );
 
@@ -344,996 +214,93 @@ ctx.fill();
 
 
 
+function loop(){
 
-/* ================================
-   RESIZE
-================================ */
+if(gameState!="PLAYING")
+return;
 
-window.addEventListener(
 
-"resize",
+ctx.clearRect(0,0,800,300);
 
-()=>{
 
-FUN.width=window.innerWidth;
+drawBackground();
 
-FUN.height=window.innerHeight;
+update();
 
-canvas.width=FUN.width;
+draw();
 
-canvas.height=FUN.height;
+drawPlayer();
 
-}
+collect();
 
+
+score++;
+
+document.getElementById("score").innerText=score;
+
+
+
+if(hit()){
+
+gameState="END";
+
+
+if(score>highScore){
+
+highScore=score;
+
+localStorage.setItem(
+"wudangHighScore",
+highScore
 );
 
+}
 
 
+alert("🧚 Training Complete!\nScore : "+score);
 
-/* ================================
-   MOUSE
-================================ */
-
-window.addEventListener(
-
-"mousemove",
-
-e=>{
-
-FUN.mouse.x=e.clientX;
-
-FUN.mouse.y=e.clientY;
+return;
 
 }
 
-);
 
-
-
-
-/* ===================================
-   END OF PART 1A
-=================================== */
-/* ===================================
-   CWWRC FUN ZONE
-   FUN.JS ALPHA v1.0
-   PART 1B
-   FIREWORKS + PARTICLES
-=================================== */
-
-
-/* ================================
-   FIREWORK CLASS
-================================ */
-
-class Firework {
-
-    constructor(){
-
-        this.x = Math.random() * FUN.width;
-
-        this.y = FUN.height;
-
-        this.targetY =
-        Math.random() *
-        (FUN.height * 0.5);
-
-        this.speed =
-        Math.random()*4 + 3;
-
-        this.color =
-        "hsl("+
-        Math.random()*360+
-        ",100%,60%)";
-
-        this.exploded = false;
-
-        this.particles = [];
-
-    }
-
-
-
-    update(){
-
-        if(!this.exploded){
-
-            this.y -= this.speed;
-
-
-            if(this.y <= this.targetY){
-
-                this.explode();
-
-            }
-
-        }
-
-
-        this.particles.forEach(
-
-            p=>p.update()
-
-        );
-
-    }
-
-
-
-    draw(){
-
-        if(!this.exploded){
-
-            ctx.beginPath();
-
-            ctx.arc(
-                this.x,
-                this.y,
-                3,
-                0,
-                Math.PI*2
-            );
-
-            ctx.fillStyle=this.color;
-
-            ctx.fill();
-
-        }
-
-
-        this.particles.forEach(
-
-            p=>p.draw()
-
-        );
-
-    }
-
-
-
-    explode(){
-
-        this.exploded=true;
-
-
-        for(let i=0;i<50;i++){
-
-            this.particles.push(
-
-                new Spark(
-                    this.x,
-                    this.y,
-                    this.color
-                )
-
-            );
-
-        }
-
-    }
+requestAnimationFrame(loop);
 
 }
 
 
 
 
-/* ================================
-   SPARK CLASS
-================================ */
+document.getElementById("start-btn").onclick=()=>{
 
-class Spark{
+score=0;
+obstacles=[];
+herbs=[];
 
+player.y=170;
+player.v=0;
 
-    constructor(x,y,color){
+document.getElementById("score").innerText=0;
 
-        this.x=x;
+gameState="PLAYING";
 
-        this.y=y;
-
-        this.color=color;
-
-        this.size=
-        Math.random()*3+1;
-
-
-        this.speedX=
-        (Math.random()-0.5)*8;
-
-
-        this.speedY=
-        (Math.random()-0.5)*8;
-
-
-        this.life=100;
-
-    }
-
-
-
-    update(){
-
-        this.x += this.speedX;
-
-        this.y += this.speedY;
-
-        this.life--;
-
-        this.speedY +=0.05;
-
-    }
-
-
-
-    draw(){
-
-        ctx.globalAlpha =
-        this.life/100;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-
-            this.x,
-
-            this.y,
-
-            this.size,
-
-            0,
-
-            Math.PI*2
-
-        );
-
-
-        ctx.fillStyle=this.color;
-
-        ctx.fill();
-
-
-        ctx.globalAlpha=1;
-
-    }
-
-
-}
-
-
-
-
-/* ================================
-   CREATE FIREWORK
-================================ */
-
-function launchFirework(){
-
-    FUN.fireworks.push(
-
-        new Firework()
-
-    );
-
-}
-
-
-
-
-setInterval(
-
-()=>{
-
-    launchFirework();
-
-},
-
-1800
-
-);
-
-
-
-
-
-/* ================================
-   UPDATE FIREWORK LOOP
-================================ */
-
-function drawFireworks(){
-
-    FUN.fireworks.forEach(
-
-        (fire,index)=>{
-
-
-            fire.update();
-
-            fire.draw();
-
-
-
-            if(
-
-                fire.exploded &&
-                fire.particles.length===0
-
-            ){
-
-                FUN.fireworks.splice(
-                    index,
-                    1
-                );
-
-            }
-
-
-        }
-
-    );
-
-}
-
-
-
-/* ================================
-   ADD TO MAIN ANIMATION
-================================ */
-
-
-const oldAnimate = animate;
-
-
-animate=function(){
-
-
-    requestAnimationFrame(
-
-        animate
-
-    );
-
-
-    ctx.clearRect(
-
-        0,
-
-        0,
-
-        FUN.width,
-
-        FUN.height
-
-    );
-
-
-    drawStars();
-
-
-    drawFireworks();
-
+loop();
 
 };
 
 
 
+document.getElementById("restart-btn").onclick=()=>{
 
-/* ===================================
-   END PART 1B
-=================================== */
-/* ===================================
-   CWWRC FUN ZONE
-   FUN.JS ALPHA v1.0
-   PART 2
-   CARD EFFECTS
-=================================== */
+score=0;
+obstacles=[];
+herbs=[];
 
+player.y=170;
+player.v=0;
 
-/* ================================
-   GAME CARD ANIMATION
-================================ */
+gameState="PLAYING";
 
-
-function initGameCards(){
-
-    const cards =
-    document.querySelectorAll(
-        ".game-card"
-    );
-
-
-    cards.forEach(
-
-        (card,index)=>{
-
-
-            card.style.opacity="0";
-
-            card.style.transform=
-            "translateY(60px)";
-
-
-            setTimeout(()=>{
-
-
-                card.style.transition=
-                "0.8s ease";
-
-
-                card.style.opacity="1";
-
-
-                card.style.transform=
-                "translateY(0)";
-
-
-            },
-
-            index*200);
-
-
-            card.addEventListener(
-
-                "mousemove",
-
-                e=>{
-
-
-                    const rect =
-                    card.getBoundingClientRect();
-
-
-                    const x =
-                    e.clientX -
-                    rect.left;
-
-
-                    const y =
-                    e.clientY -
-                    rect.top;
-
-
-
-                    const rotateY =
-                    ((x /
-                    rect.width)-0.5)*20;
-
-
-                    const rotateX =
-                    ((y /
-                    rect.height)-0.5)*-20;
-
-
-
-                    card.style.transform =
-                    `
-                    perspective(700px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
-                    scale(1.05)
-                    `;
-
-
-                }
-
-            );
-
-
-
-
-            card.addEventListener(
-
-                "mouseleave",
-
-                ()=>{
-
-
-                    card.style.transform=
-                    "translateY(0)";
-
-
-                }
-
-            );
-
-
-        }
-
-    );
-
-}
-
-
-
-
-/* ================================
-   BUTTON EFFECT
-================================ */
-
-
-function buttonGlow(){
-
-    const buttons =
-    document.querySelectorAll(
-        ".play-btn"
-    );
-
-
-    buttons.forEach(
-
-        btn=>{
-
-
-            btn.addEventListener(
-
-                "mouseenter",
-
-                ()=>{
-
-                    btn.style.boxShadow=
-                    "0 0 25px gold";
-
-                }
-
-            );
-
-
-
-            btn.addEventListener(
-
-                "mouseleave",
-
-                ()=>{
-
-                    btn.style.boxShadow=
-                    "none";
-
-                }
-
-            );
-
-
-        }
-
-    );
-
-}
-
-
-
-
-/* ================================
-   RANDOM SPARKLES
-================================ */
-
-
-function createSparkle(){
-
-
-    const sparkle =
-    document.createElement(
-        "div"
-    );
-
-
-    sparkle.innerHTML="✨";
-
-
-    sparkle.style.position=
-    "fixed";
-
-
-    sparkle.style.left =
-    Math.random()*100+"%";
-
-
-    sparkle.style.top =
-    "100%";
-
-
-    sparkle.style.fontSize =
-    Math.random()*20+10+"px";
-
-
-    sparkle.style.zIndex=
-    "999";
-
-
-    sparkle.style.pointerEvents=
-    "none";
-
-
-    sparkle.style.animation=
-    "sparkMove 5s linear";
-
-
-
-    document.body.appendChild(
-        sparkle
-    );
-
-
-
-    setTimeout(
-
-        ()=>{
-
-            sparkle.remove();
-
-        },
-
-        5000
-
-    );
-
-}
-
-
-
-setInterval(
-
-    createSparkle,
-
-    700
-
-);
-
-
-
-
-
-/* ================================
-   INIT
-================================ */
-
-
-window.addEventListener(
-
-"load",
-
-()=>{
-
-    initGameCards();
-
-    buttonGlow();
-
-}
-
-);
-
-
-
-
-
-/* ===================================
-   END PART 2
-=================================== */
-
-
-
-/* ===================================
-   CWWRC FUN ZONE
-   FUN.JS ALPHA v1.0
-   PART 3
-   TRANSITIONS + EXTRAS
-=================================== */
-
-
-/* ================================
-   PAGE FADE OUT
-================================ */
-
-
-function createFadeScreen(){
-
-    const fade =
-    document.createElement(
-        "div"
-    );
-
-
-    fade.id="fun-fade";
-
-
-    fade.style.position=
-    "fixed";
-
-    fade.style.left="0";
-
-    fade.style.top="0";
-
-    fade.style.width="100%";
-
-    fade.style.height="100%";
-
-    fade.style.background="#000";
-
-    fade.style.opacity="0";
-
-    fade.style.pointerEvents="none";
-
-    fade.style.transition=
-    "opacity 0.8s ease";
-
-    fade.style.zIndex="999999";
-
-
-    document.body.appendChild(
-        fade
-    );
-
-
-    return fade;
-
-}
-
-
-
-
-function enablePageTransition(){
-
-
-    const links =
-    document.querySelectorAll(
-        "a"
-    );
-
-
-    const fade =
-    createFadeScreen();
-
-
-
-    links.forEach(
-
-        link=>{
-
-
-            link.addEventListener(
-
-                "click",
-
-                e=>{
-
-
-                    const url =
-                    link.href;
-
-
-
-                    if(
-
-                    url &&
-                    url.includes(
-                    "fun-zone"
-                    )
-
-                    ){
-
-
-                        e.preventDefault();
-
-
-
-                        fade.style.pointerEvents=
-                        "all";
-
-
-
-                        fade.style.opacity=
-                        "1";
-
-
-
-                        setTimeout(
-
-                            ()=>{
-
-                                window.location.href=
-                                url;
-
-
-                            },
-
-                            800
-
-                        );
-
-
-                    }
-
-
-                }
-
-            );
-
-
-        }
-
-    );
-
-}
-
-
-
-
-
-/* ================================
-   SOUND MANAGER
-================================ */
-
-
-const SoundManager = {
-
-
-enabled:false,
-
-
-play:function(){
-
-    if(!this.enabled)
-    return;
-
-
-    // Future sound system
-
-},
-
-
-
-toggle:function(){
-
-    this.enabled =
-    !this.enabled;
-
-
-}
+loop();
 
 };
-
-
-
-
-
-
-/* ================================
-   SECRET EASTER EGG
-================================ */
-
-
-let secretCode=[];
-
-
-const secretKeys=[
-
-"c",
-"w",
-"w",
-"r",
-"c"
-
-];
-
-
-
-window.addEventListener(
-
-"keydown",
-
-e=>{
-
-
-    secretCode.push(
-
-        e.key.toLowerCase()
-
-    );
-
-
-
-    secretCode.splice(
-
-        -secretKeys.length-1,
-
-        secretCode.length-secretKeys.length
-
-    );
-
-
-
-    if(
-
-    secretCode.join("")
-    ===
-    secretKeys.join("")
-
-    ){
-
-
-        alert(
-
-        "🥋 CWWRC Secret Mode Activated!"
-
-        );
-
-
-        launchFirework();
-
-
-    }
-
-
-}
-
-);
-
-
-
-
-
-
-/* ================================
-   DAILY QUOTE
-================================ */
-
-
-const quotes=[
-
-"🥋 Discipline creates mastery",
-
-"🌿 Ancient wisdom lives forever",
-
-"🧘 Balance creates strength",
-
-"⚔️ Knowledge is the true weapon"
-
-];
-
-
-
-function showQuote(){
-
-
-console.log(
-
-quotes[
-
-Math.floor(
-Math.random()*
-quotes.length
-)
-
-]
-
-);
-
-
-}
-
-
-
-window.addEventListener(
-
-"load",
-
-()=>{
-
-
-    enablePageTransition();
-
-    showQuote();
-
-
-}
-
-);
-
-
-
-
-
-/* ===================================
-   END PART 3
-=================================== */
-
-
