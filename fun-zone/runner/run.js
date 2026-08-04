@@ -305,3 +305,21 @@ gameState="PLAYING";
 loop();
 
 };
+
+document.getElementById("pause-btn").onclick=()=>{
+
+if(gameState==="PLAYING"){
+
+gameState="PAUSED";
+document.getElementById("pause-btn").innerText="Resume";
+
+}else{
+
+gameState="PLAYING";
+document.getElementById("pause-btn").innerText="Pause";
+
+loop();
+
+}
+
+};
