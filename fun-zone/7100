@@ -1,0 +1,183 @@
+<!-- ===================================
+     CWWRC FUN ZONE
+     WUDANG RUNNER
+     RUN.HTML v2.0
+=================================== -->
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Wudang Runner | CWWRC
+</title>
+
+
+<link rel="stylesheet" href="run.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<header class="game-header">
+
+
+<h1>
+🥋🐉 Wudang Dragon Runner
+</h1>
+
+
+<p>
+Discipline • Speed • Wisdom
+</p>
+
+
+</header>
+
+
+
+
+
+
+<main class="game-container">
+
+
+
+<div class="game-info">
+
+
+<div>
+
+Score:
+
+<span id="score">
+0
+</span>
+
+</div>
+
+
+
+
+<div>
+
+High Score:
+
+<span id="high-score">
+0
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="game-screen">
+
+
+<canvas id="gameCanvas">
+
+Your browser does not support canvas.
+
+</canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="game-controls">
+
+
+<button id="start-btn">
+
+▶ Start Training
+
+</button>
+
+
+
+<button id="pause-btn">
+
+⏸ Pause
+
+</button>
+
+
+
+<button id="restart-btn">
+
+🔄 Restart
+
+</button>
+
+
+</div>
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+<footer>
+
+
+<a href="../fun.html">
+
+← Back To Fun Zone
+
+</a>
+
+
+
+<p>
+
+© 2026 Ceylon Wudang Wushu Research Centre
+
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+<script src="run.js"></script>
+
+
+</body>
+
+</html>
