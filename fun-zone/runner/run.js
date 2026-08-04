@@ -235,28 +235,27 @@ collect();
 
 
 score++;
+document.getElementById("restart-btn").onclick=()=>{
 
-document.getElementById("score").innerText=score;
+score=0;
+highScore=0;
 
+localStorage.removeItem("wudangHighScore");
 
+document.getElementById("score").innerText=0;
+document.getElementById("high-score").innerText=0;
 
-if(hit()){
+obstacles=[];
+herbs=[];
 
-gameState="END";
+player.y=170;
+player.v=0;
 
+gameState="PLAYING";
 
-if(score>highScore){
+loop();
 
-highScore=score;
-
-localStorage.setItem(
-"wudangHighScore",
-highScore
-);
-
-document.getElementById("high-score").innerText=highScore;
-
-}
+};
 
 
 alert("🧚 Training Complete!\nScore : "+score);
