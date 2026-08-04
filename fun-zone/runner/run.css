@@ -1,370 +1,588 @@
 /* ===================================
    CWWRC FUN ZONE
    WUDANG RUNNER
-   RUN.CSS v2.0
+   RUN.CSS v3.6
 =================================== */
 
 
 /* ========== RESET ========== */
 
-*{
-
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 
 
 /* ========== BODY ========== */
 
-body{
-
-    min-height:100vh;
-
-    background:
-
-    linear-gradient(
-        180deg,
-        #050505,
-        #151515,
-        #000
-    );
-
-
-    color:white;
-
-    font-family:
-
-    Arial,
-    Helvetica,
-    sans-serif;
-
-
-    text-align:center;
-
+body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #050505, #151515, #000);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
-
-
 
 
 /* ========== HEADER ========== */
 
-
-.game-header{
-
-    padding:
-
-    35px 20px 20px;
-
+.game-header {
+    padding: 35px 20px 20px;
 }
 
-
-
-.game-header h1{
-
-    font-size:2.4rem;
-
-    color:#ffd700;
-
-    text-shadow:
-
-    0 0 15px #b8860b;
-
-    margin-bottom:12px;
-
+.game-header h1 {
+    font-size: 2.4rem;
+    color: #ffd700;
+    text-shadow: 0 0 15px #b8860b;
+    margin-bottom: 12px;
 }
 
-
-
-.game-header p{
-
-    color:#8fbf5f;
-
-    font-size:1.1rem;
-
+.game-header p {
+    color: #8fbf5f;
+    font-size: 1.1rem;
 }
-
-
-
 
 
 /* ========== MAIN CONTAINER ========== */
 
-
-.game-container{
-
-    width:90%;
-
-    max-width:900px;
-
-    margin:auto;
-
+.game-container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
 }
-
-
-
 
 
 /* ========== INFO BAR ========== */
 
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #1c1c1c;
+    border: 1px solid #b8860b;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(184, 134, 11, 0.25);
+    min-height: 44px;
+}
 
-.game-info{
-
-
-    display:flex;
-
-    justify-content:space-between;
-
-
-    background:#1c1c1c;
-
-
-    border:
-
-    1px solid #b8860b;
-
-
-    padding:15px 25px;
-
-
-    border-radius:15px;
-
-
-    margin-bottom:20px;
-
-
-    box-shadow:
-
-    0 0 15px rgba(184,134,11,.25);
-
-
+.game-info > * {
+    flex: 0 0 auto;
 }
 
 
-
+/* ========== SCORE ========== */
 
 #score,
-#high-score{
-
-
-    color:#ffd700;
-
-    font-weight:bold;
-
-
+#high-score {
+    font-size: 1.1rem !important;
+    font-weight: bold;
+    color: #ffd700;
 }
 
 
+/* ========== LIVES + NOTIFICATION CONTAINER ========== */
+
+.lives-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 120px;
+}
+
+#lives-display {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    min-width: 80px;
+    letter-spacing: 2px;
+}
 
 
+/* ========== NOTIFICATION - NO TEXT OVERFLOW ========== */
+
+#notification-msg {
+    font-size: 0.65rem !important;
+    font-weight: bold;
+    padding: 2px 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1.5px solid #00ffff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+    text-shadow: 0 0 8px currentColor;
+    white-space: nowrap;
+    text-align: center;
+    color: #00ffff;
+    min-width: 80px;
+    max-width: 180px;
+    height: 22px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    overflow: visible;
+    flex-shrink: 0;
+}
+
+#notification-msg.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Notification Colors */
+#notification-msg.qi {
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.12), inset 0 0 12px rgba(0, 255, 255, 0.02);
+}
+
+#notification-msg.shield {
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.12), inset 0 0 12px rgba(255, 215, 0, 0.02);
+}
+
+#notification-msg.life {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.12), inset 0 0 12px rgba(255, 107, 107, 0.02);
+}
+
+#notification-msg.speed {
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.12), inset 0 0 12px rgba(255, 215, 0, 0.02);
+}
+
+#notification-msg.wave {
+    border-color: #a29bfe;
+    color: #a29bfe;
+    box-shadow: 0 0 12px rgba(162, 155, 254, 0.12), inset 0 0 12px rgba(162, 155, 254, 0.02);
+}
+
+#notification-msg.destroy {
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.15), inset 0 0 12px rgba(255, 215, 0, 0.02);
+}
+
+#notification-msg.error {
+    border-color: #ff4757;
+    color: #ff4757;
+    box-shadow: 0 0 12px rgba(255, 71, 87, 0.12), inset 0 0 12px rgba(255, 71, 87, 0.02);
+}
+
+#notification-msg.attack {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.12), inset 0 0 12px rgba(255, 107, 107, 0.02);
+}
+
+
+/* ========== ATTACK DISPLAY ========== */
+
+#attack-display {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: center;
+    color: #ff6b6b;
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+    letter-spacing: 2px;
+}
+
+#attack-display.warning {
+    color: #ff4757;
+    text-shadow: 0 0 25px rgba(255, 71, 87, 0.6);
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+
+/* ========== QI DISPLAY ========== */
+
+#qi-display {
+    font-size: 1.1rem;
+    color: #00ffff;
+    font-weight: bold;
+    min-width: 130px;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    text-align: center;
+}
+
+
+/* ========== SPEED DISPLAY ========== */
+
+#speed-display {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: center;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
 
 
 /* ========== GAME SCREEN ========== */
 
-
-.game-screen{
-
-
-    position:relative;
-
+.game-screen {
+    position: relative;
 }
 
-
-
-
-
-#gameCanvas{
-
-
-    width:100%;
-
-
-    max-width:800px;
-
-
-    height:300px;
-
-
-
-    background:
-
-    linear-gradient(
-
-        #202020,
-
-        #050505
-
-    );
-
-
-
-    border:
-
-    3px solid #b8860b;
-
-
-
-    border-radius:18px;
-
-
-
-    box-shadow:
-
-
-    0 0 30px
-
-    rgba(255,215,0,.25);
-
-
+#gameCanvas {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+    background: linear-gradient(#202020, #050505);
+    border: 3px solid #b8860b;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
 }
-
-
-
 
 
 /* ========== BUTTONS ========== */
 
-
-.game-controls{
-
-
-    margin-top:25px;
-
+.game-controls {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 }
 
-
-
-button{
-
-
-    padding:
-
-    12px 25px;
-
-
-    margin:8px;
-
-
-
-    border:none;
-
-
-    border-radius:12px;
-
-
-    cursor:pointer;
-
-
-
-    background:#b8860b;
-
-
-    color:white;
-
-
-    font-size:1rem;
-
-
-    transition:.3s;
-
-
+button {
+    padding: 10px 22px;
+    margin: 6px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #b8860b;
+    color: white;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
-
-
-button:hover{
-
-
-    transform:scale(1.08);
-
-
-    box-shadow:
-
-    0 0 20px gold;
-
-
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px gold;
 }
 
+button:active {
+    transform: scale(0.95);
+}
 
+#attack-btn {
+    background: linear-gradient(135deg, #e17055, #d63031) !important;
+    border: 2px solid #ff6b6b !important;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
+    font-weight: bold !important;
+}
 
+#attack-btn:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 40px rgba(255, 107, 107, 0.6) !important;
+}
+
+#attack-btn.cooldown {
+    background: linear-gradient(135deg, #2d3436, #1a1a2e) !important;
+    border-color: #636e72 !important;
+}
+
+#attack-btn.no-charge {
+    background: linear-gradient(135deg, #4a4a4a, #2d2d2d) !important;
+    border-color: #636e72 !important;
+}
+
+#start-btn {
+    background: linear-gradient(135deg, #00b894, #00a381) !important;
+}
+
+#start-btn:hover {
+    box-shadow: 0 0 20px rgba(0, 184, 148, 0.6) !important;
+}
+
+#restart-btn {
+    background: linear-gradient(135deg, #fdcb6e, #f9a825) !important;
+}
+
+#restart-btn:hover {
+    box-shadow: 0 0 20px rgba(253, 203, 110, 0.6) !important;
+}
+
+#pause-btn {
+    background: linear-gradient(135deg, #74b9ff, #0984e3) !important;
+}
+
+#pause-btn:hover {
+    box-shadow: 0 0 20px rgba(116, 185, 255, 0.6) !important;
+}
 
 
 /* ========== FOOTER ========== */
 
+footer {
+    margin-top: 40px;
+    padding: 25px;
+    border-top: 1px solid #333;
+}
 
-footer{
+footer a {
+    color: #d4a017;
+    text-decoration: none;
+}
 
+footer a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
 
-    margin-top:40px;
-
-
-    padding:25px;
-
-
-    border-top:
-
-    1px solid #333;
-
-
+footer p {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9rem;
 }
 
 
+/* ========== RESPONSIVE ========== */
 
-footer a{
+@media (max-width: 768px) {
+    .game-info {
+        padding: 6px 10px;
+        gap: 5px;
+        min-height: 38px;
+    }
 
+    #lives-display {
+        font-size: 1.3rem;
+    }
 
-    color:#d4a017;
+    .lives-container {
+        min-width: 100px;
+    }
 
+    #notification-msg {
+        font-size: 0.6rem !important;
+        min-width: 65px;
+        max-width: 150px;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px;
+    }
 
-    text-decoration:none;
+    #attack-display {
+        font-size: 0.9rem;
+        min-width: 50px;
+    }
 
+    #qi-display {
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
 
+    #speed-display {
+        font-size: 0.9rem;
+        min-width: 50px;
+    }
+
+    #score,
+    #high-score {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .game-header p {
+        font-size: 0.9rem;
+    }
+
+    #gameCanvas {
+        height: 220px;
+    }
+
+    .game-info {
+        padding: 5px 8px;
+        gap: 4px;
+        min-height: 34px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .lives-container {
+        min-width: 85px;
+        gap: 1px;
+    }
+
+    #lives-display {
+        font-size: 1.1rem;
+    }
+
+    #notification-msg {
+        font-size: 0.55rem !important;
+        min-width: 55px;
+        max-width: 120px;
+        height: 18px;
+        line-height: 18px;
+        padding: 1px 8px;
+        border-radius: 10px;
+    }
+
+    #attack-display {
+        font-size: 0.8rem;
+        min-width: 40px;
+        letter-spacing: 1px;
+    }
+
+    #qi-display {
+        font-size: 0.8rem;
+        min-width: 80px;
+    }
+
+    #speed-display {
+        font-size: 0.8rem;
+        min-width: 45px;
+    }
+
+    #score,
+    #high-score {
+        font-size: 0.8rem !important;
+    }
+
+    button {
+        width: 90%;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        margin: 4px;
+    }
+
+    .game-controls {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-info {
+        padding: 4px 6px;
+        gap: 3px;
+        min-height: 30px;
+        border-radius: 10px;
+    }
+
+    .game-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .game-header p {
+        font-size: 0.75rem;
+    }
+
+    #gameCanvas {
+        height: 180px;
+    }
+
+    .lives-container {
+        min-width: 70px;
+        gap: 1px;
+    }
+
+    #lives-display {
+        font-size: 0.9rem;
+    }
+
+    #notification-msg {
+        font-size: 0.5rem !important;
+        min-width: 45px;
+        max-width: 95px;
+        height: 16px;
+        line-height: 16px;
+        padding: 1px 6px;
+        border-radius: 8px;
+        border-width: 1px;
+        letter-spacing: 0.2px;
+    }
+
+    #attack-display {
+        font-size: 0.65rem;
+        min-width: 30px;
+        letter-spacing: 0px;
+    }
+
+    #qi-display {
+        font-size: 0.65rem;
+        min-width: 65px;
+    }
+
+    #speed-display {
+        font-size: 0.65rem;
+        min-width: 35px;
+    }
+
+    #score,
+    #high-score {
+        font-size: 0.7rem !important;
+    }
+
+    button {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+        margin: 3px;
+        width: 95%;
+        border-radius: 8px;
+    }
+
+    .game-controls {
+        gap: 3px;
+        margin-top: 10px;
+    }
+
+    footer {
+        padding: 12px;
+        font-size: 0.65rem;
+        margin-top: 20px;
+    }
 }
 
 
+/* ========== SCROLLBAR STYLING ========== */
 
+::-webkit-scrollbar {
+    width: 6px;
+}
 
+::-webkit-scrollbar-track {
+    background: #1c1c1c;
+}
 
+::-webkit-scrollbar-thumb {
+    background: #b8860b;
+    border-radius: 3px;
+}
 
-
-/* ========== MOBILE ========== */
-
-
-@media(max-width:600px){
-
-
-.game-header h1{
-
-    font-size:1.8rem;
-
+::-webkit-scrollbar-thumb:hover {
+    background: #ffd700;
 }
 
 
+/* ========== SELECTION ========== */
 
-#gameCanvas{
-
-    height:220px;
-
-}
-
-
-
-.game-info{
-
-    font-size:.9rem;
-
-}
-
-
-
-button{
-
-    width:90%;
-
-}
-
-
-
+::selection {
+    background: #b8860b;
+    color: white;
 }
