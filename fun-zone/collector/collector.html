@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>🍂 CWWRC Leaf Collector · v2.0</title>
+    <title>🍃 CWWRC · Endless Leaf</title>
     <style>
-        /* ============================================================
-           CSS – පාට පාට පත්‍ර සහිත (කොළ පාට නැතුව!)
-           ============================================================ */
-
-        /* ----- RESET ----- */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +12,6 @@
             user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
-
         html, body {
             width: 100%;
             min-height: 100vh;
@@ -29,8 +23,6 @@
             touch-action: none;
             overflow: hidden;
         }
-
-        /* ----- GAME WRAPPER ----- */
         #game-wrapper {
             width: 100%;
             max-width: 480px;
@@ -43,8 +35,6 @@
             position: relative;
             border: 2px solid #6b4c8a;
         }
-
-        /* ----- HUD ----- */
         #hud {
             display: flex;
             justify-content: space-between;
@@ -60,7 +50,6 @@
             box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
             border: 2px solid #8b6bb0;
         }
-
         #hud .hud-item {
             background: #2a1f3d;
             padding: 0.2rem 0.8rem;
@@ -71,16 +60,14 @@
             gap: 4px;
             border: 1px solid #8b6bb0;
         }
-
         #timer-display {
             background: #2a1f3d;
             color: #ffd6e0;
             min-width: 4rem;
             justify-content: center;
             border-color: #ff8fab;
+            display: none;  /* timer hidden – endless */
         }
-
-        /* ----- CANVAS CONTAINER ----- */
         #canvas-container {
             position: relative;
             width: 100%;
@@ -90,7 +77,6 @@
             overflow: hidden;
             box-shadow: inset 0 0 0 3px #6b4c8a, 0 8px 15px rgba(0,0,0,0.5);
         }
-
         #gameCanvas {
             display: block;
             width: 100%;
@@ -99,8 +85,6 @@
             touch-action: none;
             cursor: pointer;
         }
-
-        /* ----- KNOB ----- */
         #knob {
             position: absolute;
             width: 12%;
@@ -117,8 +101,6 @@
             top: 50%;
             left: 50%;
         }
-
-        /* ----- OVERLAY ----- */
         #overlay {
             position: absolute;
             top: 0;
@@ -140,12 +122,10 @@
             transition: opacity 0.3s ease;
             border: 3px solid #8b6bb0;
         }
-
         #overlay.hidden {
             opacity: 0;
             pointer-events: none;
         }
-
         #overlay h1 {
             font-size: 2.8rem;
             text-shadow: 0 6px 0 #1a1a2e;
@@ -156,21 +136,17 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         #overlay h2 {
             font-size: 2rem;
             margin: 0.3rem 0 0.1rem;
             color: #ffb3c6;
         }
-
         #overlay p {
             font-size: 1.1rem;
             margin: 0.3rem 0 0.8rem;
             opacity: 0.9;
             color: #d4b0ff;
         }
-
-        /* ----- BUTTON ----- */
         #main-action-btn {
             background: linear-gradient(135deg, #ff6b9d, #ffb347, #6bcbff, #d47bff);
             border: 3px solid #f0e6ff;
@@ -187,12 +163,10 @@
             transition: 0.07s ease;
             display: inline-block;
         }
-
         #main-action-btn:active {
             transform: translateY(5px);
             box-shadow: 0 1px 0 #3a2a4a;
         }
-
         #final-score {
             background: #1a1a2e;
             padding: 0.2rem 1.8rem;
@@ -203,15 +177,12 @@
             border: 2px solid #ffb347;
             color: #ffb3c6;
         }
-
         .sub-text {
             margin-top: 0.5rem;
             font-size: 0.8rem;
             opacity: 0.6;
             color: #8b6bb0;
         }
-
-        /* ----- RESPONSIVE ----- */
         @media (max-width: 420px) {
             #hud { font-size: 0.85rem; padding: 0.4rem 0.7rem; }
             #overlay h1 { font-size: 2.2rem; }
@@ -219,7 +190,6 @@
             #main-action-btn { font-size: 1.3rem; padding: 0.5rem 1.8rem; }
             #knob { width: 14%; }
         }
-
         @media (min-width: 600px) {
             #game-wrapper { max-width: 500px; }
             #overlay h1 { font-size: 3.5rem; }
@@ -228,40 +198,28 @@
     </style>
 </head>
 <body>
-
 <div id="game-wrapper">
-    <!-- HUD -->
     <div id="hud">
         <span class="hud-item">🍂 <span id="score-display">0</span></span>
         <span class="hud-item">🌟 Lv.<span id="level-display">1</span></span>
-        <span class="hud-item" id="timer-display">⏳ 30s</span>
+        <span class="hud-item" id="timer-display">⏳ ∞</span>
     </div>
-
-    <!-- Canvas + Knob + Overlay -->
     <div id="canvas-container">
         <canvas id="gameCanvas" width="600" height="600"></canvas>
         <div id="knob"></div>
-
-        <!-- OVERLAY -->
         <div id="overlay">
             <h1>🍃 CWWRC</h1>
-            <h2>Leaf Collector</h2>
+            <h2>Endless Leaf</h2>
             <p>🌈 catch colorful leaves · move the knob</p>
             <button id="main-action-btn">▶ PLAY</button>
-            <div class="sub-text">v2.0 · finger tracking</div>
+            <div class="sub-text">∞ endless · no timer</div>
         </div>
     </div>
 </div>
-
 <script>
-    // ================================================================
-    // COMPLETE COLLECTOR.JS v2.0 – පාට පාට පත්‍ර සහිත!
-    // ================================================================
-
     (function() {
         "use strict";
 
-        // ---------- DOM REFS ----------
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const overlay = document.getElementById('overlay');
@@ -271,45 +229,36 @@
         const timerSpan = document.getElementById('timer-display');
         const knob = document.getElementById('knob');
 
-        // ---------- GAME STATE ----------
         const STATE = { MENU: 0, PLAYING: 1, GAMEOVER: 2 };
         let gameState = STATE.MENU;
         let score = 0;
         let level = 1;
-        let timeLeft = 30;
-        let timerInterval = null;
+        // timer removed – endless
 
-        // Player (knob) normalized 0..1
         let playerX = 0.5;
         let playerY = 0.5;
         let targetX = 0.5;
         let targetY = 0.5;
 
-        // Leaves - පාට පාට! (කොළ පාට නැතුව)
         let leaves = [];
         const MAX_LEAVES = 40;
         let spawnCounter = 0;
-        const SPAWN_RATE = 25;
+        const SPAWN_RATE = 22;
 
-        // පාට පාට පත්‍ර EMOJIS - කොළ පාට නැතුව!
         const LEAF_EMOJIS = [
             '🍂', '🍁', '🌸', '🌺', '🌻', 
             '🌷', '🌹', '💐', '🌼', '🌾',
             '🌸', '🌺', '🌻', '🌷', '🌹',
             '💐', '🌼', '🌸', '🌺', '🌻'
         ];
-
-        // පාට පාට පත්‍ර සඳහා වර්ණ (glow effect සඳහා)
         const COLORS = [
             '#FF6B6B', '#FF9F43', '#FECA57', '#54A0FF', '#5F27CD',
             '#FF6B9D', '#FF9F43', '#FECA57', '#54A0FF', '#A29BFE'
         ];
 
-        // Animation
         let animationId = null;
         let frameCount = 0;
 
-        // ---------- HELPERS ----------
         function getNormalizedCoords(clientX, clientY) {
             const rect = canvas.getBoundingClientRect();
             const scaleX = 600 / rect.width;
@@ -329,7 +278,6 @@
             knob.style.top = (playerY * 100) + '%';
         }
 
-        // ---------- LEAF CLASS (පාට පාට පත්‍ර) ----------
         class Leaf {
             constructor(x, y, speed, size, emoji, color) {
                 this.x = x;
@@ -342,10 +290,8 @@
                 this.rotSpeed = (Math.random() - 0.5) * 0.05;
                 this.alive = true;
                 this.drift = (Math.random() - 0.5) * 0.004;
-                // පත්‍රයට glow effect එකක්
                 this.glowSize = 0;
             }
-
             update() {
                 this.y += this.speed;
                 this.x += this.drift + Math.sin(this.y * 25) * 0.0015;
@@ -355,41 +301,28 @@
                 this.glowSize = 15 + Math.sin(this.y * 20) * 8;
                 if (this.y > 1.2) this.alive = false;
             }
-
             draw(ctx) {
                 const cx = this.x * 600;
                 const cy = this.y * 600;
                 const sizePx = this.size * 600;
-
                 ctx.save();
                 ctx.translate(cx, cy);
                 ctx.rotate(this.rotation);
-
-                // Glow effect - පත්‍රයට වටේට ආලෝකය
                 ctx.shadowColor = this.color + '80';
                 ctx.shadowBlur = this.glowSize;
-
-                // Emoji එක අඳින්න
                 ctx.font = `${sizePx * 1.4}px "Segoe UI Emoji", "Apple Color Emoji", system-ui, sans-serif`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                
-                // පත්‍රයට පාට පාට filter එකක්
                 ctx.fillStyle = this.color;
                 ctx.shadowColor = this.color;
                 ctx.shadowBlur = 25;
-                
                 ctx.fillText(this.emoji, 0, 0);
-                
-                // අමතර glow එකක්
                 ctx.shadowBlur = 40;
                 ctx.globalAlpha = 0.3;
                 ctx.fillText(this.emoji, 0, 0);
                 ctx.globalAlpha = 1;
-
                 ctx.restore();
             }
-
             collidesWith(px, py, knobRadius) {
                 const dx = this.x - px;
                 const dy = this.y - py;
@@ -397,7 +330,6 @@
             }
         }
 
-        // ---------- SPAWN ----------
         function spawnLeaf() {
             const size = 0.05 + Math.random() * 0.06;
             const speed = 0.004 + Math.random() * 0.014 + (level * 0.001);
@@ -413,19 +345,15 @@
             ));
         }
 
-        // ---------- HUD ----------
         function updateHUD() {
             scoreSpan.textContent = score;
             levelSpan.textContent = level;
-            timerSpan.textContent = `⏳ ${timeLeft}s`;
+            timerSpan.textContent = '⏳ ∞';
         }
 
-        // ---------- GAME CONTROL ----------
         function resetGame() {
-            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
             score = 0;
             level = 1;
-            timeLeft = 30;
             leaves = [];
             spawnCounter = 0;
             frameCount = 0;
@@ -445,52 +373,9 @@
             overlay.classList.add('hidden');
             gameState = STATE.PLAYING;
             mainBtn.textContent = '↻ RESTART';
-
-            timerInterval = setInterval(() => {
-                timeLeft -= 1;
-                if (timeLeft <= 0) {
-                    timeLeft = 0;
-                    updateHUD();
-                    gameOver();
-                } else {
-                    const newLevel = Math.floor((30 - timeLeft) / 10) + 1;
-                    if (newLevel !== level) { level = newLevel; }
-                    updateHUD();
-                }
-            }, 1000);
-
             updateHUD();
         }
 
-        function gameOver() {
-            if (gameState === STATE.GAMEOVER) return;
-            gameState = STATE.GAMEOVER;
-            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-
-            overlay.classList.remove('hidden');
-            overlay.innerHTML = `
-                <h1>🎉 Game Over</h1>
-                <h2>Score: <span id="final-score">${score}</span></h2>
-                <p>level ${level} · collected ${score} colorful leaves</p>
-                <button id="main-action-btn">🔄 PLAY AGAIN</button>
-                <div class="sub-text">tap to retry</div>
-            `;
-            document.getElementById('main-action-btn').addEventListener('click', (e) => {
-                e.stopPropagation();
-                resetGame();
-                startGame();
-            });
-            overlay.addEventListener('click', function handler(e) {
-                if (e.target === overlay || e.target.tagName === 'P' || e.target.tagName === 'DIV') {
-                    resetGame();
-                    startGame();
-                }
-                overlay.removeEventListener('click', handler);
-            });
-            updateHUD();
-        }
-
-        // ---------- COLLISION ----------
         function processCollisions() {
             const knobRadius = 0.07;
             for (let i = leaves.length - 1; i >= 0; i--) {
@@ -507,20 +392,13 @@
             }
         }
 
-        // ---------- DRAW ----------
         function drawScene() {
             ctx.clearRect(0, 0, 600, 600);
-            
-            // පාට පාට පත්‍ර අඳින්න
             for (const leaf of leaves) {
                 leaf.draw(ctx);
             }
-
-            // Player glow
             const px = playerX * 600;
             const py = playerY * 600;
-            
-            // Outer glow
             const gradient = ctx.createRadialGradient(px, py, 5, px, py, 50);
             gradient.addColorStop(0, 'rgba(255, 107, 157, 0.3)');
             gradient.addColorStop(0.5, 'rgba(255, 107, 157, 0.1)');
@@ -529,8 +407,6 @@
             ctx.arc(px, py, 50, 0, 2 * Math.PI);
             ctx.fillStyle = gradient;
             ctx.fill();
-
-            // Inner ring
             ctx.beginPath();
             ctx.arc(px, py, 22, 0, 2 * Math.PI);
             ctx.strokeStyle = 'rgba(255, 200, 200, 0.5)';
@@ -541,7 +417,6 @@
             ctx.shadowBlur = 0;
         }
 
-        // ---------- GAME LOOP ----------
         function gameLoop() {
             if (gameState === STATE.PLAYING) {
                 frameCount++;
@@ -569,7 +444,6 @@
             }
         }
 
-        // ---------- EVENTS (Finger / Mouse) ----------
         function handlePointerMove(e) {
             if (gameState !== STATE.PLAYING) return;
             e.preventDefault();
@@ -599,7 +473,6 @@
         canvas.addEventListener('mousemove', (e) => { if (e.buttons === 1) handlePointerMove(e); });
         canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 
-        // ---------- MAIN BUTTON ----------
         mainBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (gameState === STATE.MENU || gameState === STATE.GAMEOVER) {
@@ -611,15 +484,12 @@
             }
         });
 
-        // ---------- INIT ----------
         resetGame();
         updateKnobPosition();
         gameLoop();
 
-        console.log('🌈 CWWRC Leaf Collector v2.0 – පාට පාට පත්‍ර සහිත!');
-        console.log('🍂 කොළ පාට නැතුව!');
+        console.log('🍃 CWWRC Endless Leaf – timer removed!');
     })();
 </script>
-
 </body>
 </html>
