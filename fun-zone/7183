@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>🍂 CWWRC Leaf Collector · v2.0</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="game-wrapper">
+    <!-- HUD -->
+    <div id="hud">
+        <span class="hud-item">🍂 <span id="score-display">0</span></span>
+        <span class="hud-item">🌟 Lv.<span id="level-display">1</span></span>
+        <span class="hud-item" id="timer-display">⏳ 30s</span>
+    </div>
+
+    <!-- Canvas + Knob + Overlay -->
+    <div id="canvas-container">
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+        <div id="knob"></div>
+
+        <!-- OVERLAY -->
+        <div id="overlay">
+            <h1>🍃 CWWRC</h1>
+            <h2>Leaf Collector</h2>
+            <p>🌈 catch colorful leaves · move the knob</p>
+            <button id="main-action-btn">▶ PLAY</button>
+            <div class="sub-text">v2.0 · finger tracking</div>
+        </div>
+    </div>
+</div>
+
+<script src="collector.js"></script>
+</body>
+</html>
