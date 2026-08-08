@@ -1,883 +1,1154 @@
-<!-- ===================================
-     CWWRC WEBSITE
-     CULTURE.HTML v4.0
-     PART 1/4
-=================================== -->
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Sri Lankan Heritage | Ceylon Wudang Wushu Research Centre</title>
+    <meta name="description" content="Explore Sri Lankan heritage from ancient civilizations, traditional knowledge, Ayurveda, martial arts, meditation and cultural wisdom.">
+    <meta name="keywords" content="Sri Lanka Heritage, Ancient Lanka, Ayurveda, Angampora, Buddhism, Sigiriya, Traditional Culture">
+    <meta name="author" content="Ceylon Wudang Wushu Research Centre">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sri Lankan Heritage | CWWRC">
+    <meta property="og:description" content="Explore the timeless wisdom of Sri Lankan culture, from ancient kingdoms to modern traditions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cwwrc.lk/culture.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* ========================================
+               CSS RESET & BASE
+            ======================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<meta charset="UTF-8">
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f4ec;
+            color: #2c1810;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-<title>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
-Sri Lankan Heritage | Ceylon Wudang Wushu Research Centre
+        a {
+            color: #8b4513;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-</title>
+        a:hover {
+            color: #d4a574;
+        }
 
-<meta name="description"
+        /* ========================================
+               UTILITY
+            ======================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-content="Explore Sri Lankan heritage from ancient civilizations, traditional knowledge, Ayurveda, martial arts, meditation and cultural wisdom."
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
 
->
+        /* ========================================
+               HEADER
+            ======================================== */
+        .culture-header {
+            background: linear-gradient(135deg, #2c1810 0%, #4a2818 100%);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-<meta name="keywords"
+        .culture-logo img {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
 
-content="Sri Lanka Heritage, Ancient Lanka, Ayurveda, Angampora, Buddhism, Sigiriya, Traditional Culture"
+        .culture-logo img:hover {
+            transform: scale(1.05);
+        }
 
->
+        .culture-header h1 {
+            color: #ffd700;
+            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+            text-align: center;
+            flex: 1;
+        }
 
-<meta name="author"
+        /* ========================================
+               HERO
+            ======================================== */
+        .culture-hero {
+            position: relative;
+            height: clamp(300px, 60vh, 600px);
+            overflow: hidden;
+            background: #1a0e08;
+        }
 
-content="Ceylon Wudang Wushu Research Centre"
+        .culture-hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: transform 8s ease;
+        }
 
->
+        .culture-hero:hover .culture-hero-image {
+            transform: scale(1.05);
+        }
 
-<link rel="stylesheet" href="culture.css">
+        .culture-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(44, 24, 16, 0.8) 0%, rgba(44, 24, 16, 0.3) 100%);
+            z-index: 1;
+        }
 
+        .culture-hero-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .culture-hero-content h2 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .culture-hero-content h2 br {
+            display: none;
+        }
+
+        .culture-hero-content p {
+            font-size: clamp(1rem, 1.5vw, 1.4rem);
+            max-width: 700px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+               SECTION COMMON
+            ======================================== */
+        .culture-section {
+            padding: 60px 20px;
+            background: #fffbf5;
+        }
+
+        .culture-section:nth-child(even) {
+            background: #f8f0e8;
+        }
+
+        .culture-section h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            color: #2c1810;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .culture-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #8b4513, #d4a574);
+            border-radius: 2px;
+        }
+
+        .culture-section p {
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            max-width: 800px;
+            margin: 0 auto;
+            color: #3d2a1e;
+            text-align: center;
+        }
+
+        /* ========================================
+               HERITAGE BLOCKS
+            ======================================== */
+        .heritage-block {
+            padding: 60px 20px;
+            background: #fffbf5;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .heritage-block:nth-child(even) {
+            background: #f8f0e8;
+        }
+
+        .heritage-block.alternate {
+            background: #f0ebe4;
+        }
+
+        .heritage-block .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .heritage-block .container.reverse {
+            direction: rtl;
+        }
+
+        .heritage-block .container.reverse>* {
+            direction: ltr;
+        }
+
+        .heritage-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .heritage-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .heritage-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .heritage-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .heritage-text h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            color: #2c1810;
+            margin-bottom: 16px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .heritage-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #8b4513, #d4a574);
+            border-radius: 2px;
+        }
+
+        .heritage-text p {
+            font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+            color: #3d2a1e;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .heritage-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+               TIMELINE INTRO
+            ======================================== */
+        .timeline-intro {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #2c1810, #4a2818);
+            color: white;
+            text-align: center;
+        }
+
+        .timeline-intro h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin-bottom: 16px;
+        }
+
+        .timeline-intro p {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* ========================================
+               GRID SECTION
+            ======================================== */
+        .heritage-grid-section {
+            padding: 60px 20px;
+            background: #fffbf5;
+        }
+
+        .heritage-grid-section h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c1810;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .heritage-grid-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #8b4513, #d4a574);
+            border-radius: 2px;
+        }
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .heritage-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding-bottom: 24px;
+        }
+
+        .heritage-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14);
+        }
+
+        .heritage-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .heritage-card h3 {
+            font-size: 1.2rem;
+            color: #2c1810;
+            padding: 16px 20px 8px;
+        }
+
+        .heritage-card p {
+            font-size: 0.95rem;
+            color: #5a4030;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+               VISION SECTION
+            ======================================== */
+        .culture-vision {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a0e08, #2c1810);
+            color: white;
+            text-align: center;
+        }
+
+        .culture-vision .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .culture-vision img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .culture-vision h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .culture-vision p {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 16px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+               FOOTER
+            ======================================== */
+        footer {
+            background: #0a0604;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        footer p {
+            line-height: 2;
+        }
+
+        /* ========================================
+               BACK TO TOP
+            ======================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b4513, #d4a574);
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        .back-to-top:active {
+            transform: scale(0.9);
+        }
+
+        /* ========================================
+               RESPONSIVE
+            ======================================== */
+        @media (max-width: 1024px) {
+            .heritage-block .container {
+                gap: 30px;
+            }
+
+            .heritage-image img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .culture-header {
+                padding: 12px 16px;
+            }
+
+            .culture-logo img {
+                height: 40px;
+            }
+
+            .culture-hero-content h2 br {
+                display: inline;
+            }
+
+            .heritage-block .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .heritage-block .container.reverse {
+                direction: ltr;
+            }
+
+            .heritage-image img {
+                height: 200px;
+            }
+
+            .heritage-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .heritage-text {
+                text-align: center;
+            }
+
+            .culture-hero {
+                height: 400px;
+            }
+
+            .heritage-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .culture-vision img {
+                max-height: 200px;
+            }
+
+            .back-to-top {
+                bottom: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .culture-section {
+                padding: 40px 16px;
+            }
+
+            .heritage-block {
+                padding: 40px 16px;
+            }
+
+            .culture-hero {
+                height: 320px;
+            }
+
+            .culture-hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .heritage-image img {
+                height: 160px;
+            }
+
+            .heritage-grid-section {
+                padding: 40px 16px;
+            }
+
+            .culture-vision {
+                padding: 40px 16px;
+            }
+        }
+
+        /* ========================================
+               PRINT STYLES
+            ======================================== */
+        @media print {
+            .culture-hero {
+                height: auto;
+                min-height: 200px;
+            }
+
+            .back-to-top {
+                display: none !important;
+            }
+
+            .heritage-image {
+                break-inside: avoid;
+            }
+
+            .heritage-block {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* ========================================
+               ANIMATIONS
+            ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
-<header class="culture-header">
-
-<div class="culture-logo">
-
-<a href="../index.html">
-
-<img src="../images/logo.png"
-
-alt="CWWRC logo">
-
-</a>
-
-</div>
-
-<h1>
-
-Sri Lankan Cultural Heritage
-
-</h1>
-
-</header>
-
-<!-- ================= HERO SECTION ================= -->
-
-<section class="culture-hero">
-
-<img
-
-src="cul images/hero.png"
-
-alt="Sri Lankan Heritage"
-
-class="culture-hero-image"
-
->
-
-<div class="culture-overlay"></div>
-
-<div class="culture-hero-content">
-
-<h2>
-
-The Timeless Heritage
-<br>
-of Sri Lanka
-
-</h2>
-
-<p>
-
-A journey through ancient wisdom,
-civilization, healing traditions,
-arts and spiritual heritage.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   CULTURE INTRODUCTION SECTION
-=================================== -->
-
-<section class="culture-section">
-
-<div class="culture-container">
-
-<h2>
-An Island of Timeless Wisdom
-</h2>
-
-<p>
-
-Sri Lanka, known as the Pearl of the Indian Ocean,
-holds a unique cultural identity shaped by thousands
-of years of history, spirituality, knowledge and
-interaction between people and nature.
-
-From ancient settlements to magnificent kingdoms,
-from traditional healing systems to martial arts and
-meditation practices, Sri Lankan heritage represents
-a harmony between human life, environment and wisdom.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   RAVANA CULTURAL TRADITION
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/rawana.png"
-
-alt="Ravana Cultural Tradition"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Ravana Tradition and Ancient Legends
-
-</h2>
-
-<p>
-
-The story of King Ravana remains one of the most
-recognised legends connected with Sri Lanka's cultural
-memory. Across generations, traditions have preserved
-stories about Ravana as a powerful king associated
-with knowledge, music, medicine and advanced skills.
-
-</p>
-
-<p>
-
-While many aspects belong to mythology and oral
-tradition rather than confirmed historical records,
-the Ravana narrative continues to influence Sri Lankan
-arts, literature and cultural identity.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   BALANGODA HERITAGE
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/balangoda.png"
-
-alt="Balangoda Heritage"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Balangoda Heritage
-
-</h2>
-
-<p>
-
-The discovery of prehistoric human remains associated
-with the Balangoda region provides important evidence
-about ancient human life in Sri Lanka.
-
-</p>
-
-<p>
-
-These findings reveal a long connection between humans,
-nature and the island environment, showing that Sri Lanka
-has been home to human communities for thousands of years.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   ANCIENT KINGDOMS INTRO
-=================================== -->
-
-<section class="timeline-intro">
-
-<div class="culture-container">
-
-<h2>
-
-The Great Civilizations of Sri Lanka
-
-</h2>
-
-<p>
-
-Over centuries, Sri Lanka developed remarkable
-civilizations known for architecture, irrigation,
-literature, art, spirituality and scientific knowledge.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   ANURADHAPURA KINGDOM
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/anuradhapura.png"
-
-alt="Anuradhapura Kingdom"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Anuradhapura — The First Great Kingdom
-
-</h2>
-
-<p>
-
-Anuradhapura represents one of the greatest
-civilizations of ancient Sri Lanka. For centuries,
-it became a centre of governance, spirituality,
-education, architecture and cultural development.
-
-</p>
-
-<p>
-
-The city was known for magnificent stupas,
-monasteries, advanced engineering and a deep
-connection between society and Buddhist philosophy.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   SIGIRIYA HERITAGE
-=================================== -->
-
-<section class="heritage-block alternate">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/sigiriya.png"
-
-alt="Sigiriya Rock Fortress"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Sigiriya — The Lion Rock Legacy
-
-</h2>
-
-<p>
-
-Sigiriya is one of Sri Lanka's most iconic cultural
-landmarks. This ancient rock fortress demonstrates
-remarkable achievements in architecture, urban
-planning, water management and artistic expression.
-
-</p>
-
-<p>
-
-Its gardens, paintings and engineering concepts
-continue to attract researchers and visitors from
-around the world.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   POLONNARUWA KINGDOM
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/polonnaruwa.png"
-
-alt="Polonnaruwa Kingdom"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Polonnaruwa — A Centre of Knowledge and Art
-
-</h2>
-
-<p>
-
-The Polonnaruwa Kingdom marked 
-one of the greatest periods of
-Sri Lanka's medieval civilization, 
-flourishing between the 11th and 13th centuries.
-Renowned for its remarkable architecture, 
-advanced hydraulic engineering, 
-exquisite stone sculptures, 
-and well-planned urban design, 
-the kingdom demonstrated 
-exceptional innovation and 
-administrative excellence. 
-Sacred monuments such as the </p>
-     <p>Gal Vihara,</p>
-     <p>Lankatilaka Temple,</p>
-     <p>Parakrama Samudra </p>
-<p>continue to reflect the artistic brilliance,
-spiritual devotion, and engineering mastery 
-that shaped Sri Lanka's enduring cultural heritage.
-
-</p>
-
-<p>
-
-Ancient temples, royal structures and artistic
-creations reflect the skill and creativity of the
-people of that era.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   BUDDHISM AND CULTURE
-=================================== -->
-<section class="heritage-block">
-<div class="culture-container">
-<div class="heritage-image">
-<img
-src="cul images/buddhism.png"
-alt="Buddhist Heritage"
->
-</div>
-<div class="heritage-text">
-<h2>
-Buddhism and Spiritual Heritage
-</h2>
-<p>
-Our Cultural Heritage
-Buddhism has been the cornerstone of Sri Lanka's cultural identity for over two millennia, profoundly shaping its philosophy, art, architecture, education, and daily life.
-</p>
-<p>
-How CWWRC embraces these cultural values:
-</p>
- <p>
-· Culturally Sensitive Interventions – We respect the historical and religious significance of the communities we serve across the island.
- </p>
- <p>
-· Mindfulness & Resilience – Meditative practices are integrated into our psycho-social support for disaster-affected communities.
- </p>
- <p>
-· Compassion & Harmony – The Buddhist principle of "May all beings live in peace" guides our humanitarian mission.</p>
-<p>
-Meditation, compassion, discipline and harmony with
-nature remain important elements within this
-spiritual heritage.
-</p>
-</div>
-</div>
-</section>
-
-<!-- ===================================
-   IRRIGATION CIVILIZATION
-=================================== -->
-<section class="heritage-block">
-<div class="culture-container">
-<div class="heritage-image">
-<img
-src="cul images/irrigation.png"
-alt="Ancient Irrigation Systems"
->
-</div>
-<div class="heritage-text">
-<h2>
-The Ancient Irrigation Civilization
-</h2>
-<p>
-Ancient Irrigation Heritage
-</p>
-<p>
-Sri Lanka's ancient engineers created an advanced irrigation network of reservoirs, canals and water management systems that stands as one of the greatest engineering marvels in world history. This heritage is an integral part of our cultural identity.
-</p>
-<p>
-Key Features:
-</p>
-<p>
-· Tank (Reservoir) Culture – Massive water reservoirs built during the Anuradhapura and Polonnaruwa eras (e.g., Tisa Wewa, Parakrama Samudraya)
-</p>
-<p>
-· Canals & Channels – Hundreds of miles of intricate water distribution networks
-</p>
-<p>
-· Water Management – Sophisticated techniques for harvesting rainwater for agriculture and daily life
-</p>
-<p>
-CWWRC and This Heritage:
-</p
-<p>
-· In our disaster relief operations, we pay special attention to the condition and maintenance of these ancient water systems.
-· Understanding this heritage is essential for protecting the livelihoods of farming communities in the dry zone.
-· These ancient water management systems hold valuable lessons in sustainability that remain relevant today.
-</p>
-<p>
-And also these achievements demonstrate the island's historical
-knowledge of agriculture, engineering and sustainable
-living.
-</p>
-</div>
-</div>
-</section>
-<!-- ===================================
-   AYURVEDA HERITAGE
-=================================== -->
-<section class="heritage-block">
-<div class="culture-container">
-<div class="heritage-image">
-<img
-src="cul images/ayurveda.png"
-alt="Sri Lankan Ayurveda"
->
-</div>
-<div class="heritage-text">
-<h2>
-Sri Lankan Ayurveda and Traditional Healing
-</h2>
-<p>
-Sri Lanka has a long tradition of indigenous
-medicine based on herbs, natural resources and
-holistic approaches to wellbeing.
-</p>
-<p>
-Ayurveda represents a connection between human
-health, nature and traditional knowledge passed
-through generations.
-</p>
-</div>
-</div>
-</section>
-
-<!-- ===================================
-   ANGAMPORA
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/angampora.png"
-
-alt="Angampora"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Angampora — Sri Lankan Martial Heritage
-
-</h2>
-
-<p>
-
-Angampora is a traditional Sri Lankan martial art
-combining physical discipline, combat techniques,
-body conditioning and cultural values.
-
-</p>
-
-<p>
-
-It represents the warrior traditions and discipline
-that existed within Sri Lankan society for centuries.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   MEDITATION
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/meditation.png"
-
-alt="Meditation Tradition"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Meditation and Inner Wisdom
-
-</h2>
-
-<p>
-
-Meditation has been an important part of Sri Lankan
-spiritual traditions, focusing on awareness,
-discipline and mental development.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   ARTS AND KNOWLEDGE
-=================================== -->
-
-<section class="heritage-grid-section">
-
-<div class="culture-container">
-
-<h2>
-
-Arts, Knowledge and Living Traditions
-
-</h2>
-
-<div class="heritage-grid">
-
-<div class="heritage-card">
-
-<img
-
-src="cul images/dance.png"
-
-alt="Traditional Dance"
-
->
-
-<h3>
-
-Traditional Dance
-
-</h3>
-
-<p>
-
-A rich performing art expressing stories,
-spiritual beliefs and cultural identity.
-
-</p>
-
-</div>
-
-<div class="heritage-card">
-
-<img
-
-src="cul images/ola.png"
-
-alt="Ola Leaf Manuscripts"
-
->
-
-<h3>
-
-Ola Leaf Manuscripts
-
-</h3>
-
-<p>
-
-Ancient documentation of medicine,
-astrology, literature and knowledge.
-
-</p>
-
-</div>
-
-<div class="heritage-card">
-
-<img
-
-src="cul images/festivals.png"
-
-alt="Sri Lankan Festivals"
-
->
-
-<h3>
-
-Festivals and Traditions
-
-</h3>
-
-<p>
-
-Celebrations reflecting community,
-spirituality and cultural unity.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   NATURE AND MODERN SRI LANKA
-=================================== -->
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/tea.png"
-
-alt="Sri Lankan Tea"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-Nature, Tea and Global Identity
-
-</h2>
-
-<p>
-
-Sri Lanka's landscapes, forests, wildlife and tea
-industry have created a unique identity recognised
-around the world.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="heritage-block">
-
-<div class="culture-container">
-
-<div class="heritage-image">
-
-<img
-
-src="cul images/unesco.png"
-
-alt="UNESCO Heritage"
-
->
-
-</div>
-
-<div class="heritage-text">
-
-<h2>
-
-World Heritage of Sri Lanka
-
-</h2>
-
-<p>
-
-Sri Lanka's ancient cities, natural environments
-and cultural landmarks continue to represent the
-island's outstanding contribution to world heritage.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===================================
-   MODERN SRI LANKA + CWWRC VISION
-=================================== -->
-
-<section class="culture-vision">
-
-<div class="culture-container">
-
-<img
-
-src="cul images/modern.png"
-
-alt="Modern Sri Lanka"
-
->
-
-<h2>
-
-Sri Lanka — Connecting Ancient Wisdom With The Future
-
-</h2>
-
-<p>
-
-Today, Sri Lanka continues to preserve its heritage
-while embracing modern research, innovation and
-global cooperation.
-
-</p>
-
-<p>
-
-Ceylon Wudang Wushu Research Centre aims to support
-the preservation, research and international
-presentation of traditional knowledge, martial arts,
-Ayurveda and cultural wisdom.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-<p>
-
-© 2026 Ceylon Wudang Wushu Research Centre
-
-<br>
-
-Sri Lankan Cultural Heritage Research
-
-</p>
-
-</footer>
-
-<script src="culture.js"></script>
+    <!-- ========================================
+    HEADER
+    ======================================== -->
+    <header class="culture-header" role="banner">
+        <div class="culture-logo">
+            <a href="../index.html" aria-label="CWWRC Home">
+                <img src="../images/logo.png" alt="Ceylon Wudang Wushu Research Centre Logo">
+            </a>
+        </div>
+        <h1>Sri Lankan Cultural Heritage</h1>
+        <div style="width:50px;"></div> <!-- Spacer for flex balance -->
+    </header>
+
+    <!-- ========================================
+    HERO
+    ======================================== -->
+    <section class="culture-hero" aria-label="Heritage hero banner">
+        <img src="cul images/hero.png" alt="Sri Lankan cultural heritage landscape" class="culture-hero-image" loading="eager">
+        <div class="culture-overlay"></div>
+        <div class="culture-hero-content">
+            <h2>The Timeless Heritage <br> of Sri Lanka</h2>
+            <p>A journey through ancient wisdom, civilization, healing traditions, arts and spiritual heritage.</p>
+        </div>
+    </section>
+
+    <!-- ========================================
+    INTRODUCTION
+    ======================================== -->
+    <section class="culture-section animate-on-scroll" aria-labelledby="intro-title">
+        <div class="container">
+            <h2 id="intro-title">An Island of Timeless Wisdom</h2>
+            <p>
+                Sri Lanka, known as the Pearl of the Indian Ocean, holds a unique cultural identity shaped by thousands
+                of years of history, spirituality, knowledge and interaction between people and nature.
+            </p>
+            <p style="margin-top:16px;">
+                From ancient settlements to magnificent kingdoms, from traditional healing systems to martial arts and
+                meditation practices, Sri Lankan heritage represents a harmony between human life, environment and wisdom.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+    RAVANA
+    ======================================== -->
+    <section class="heritage-block animate-on-scroll" aria-labelledby="ravana-title">
+        <div class="container">
+            <div class="heritage-image">
+                <img src="cul images/rawana.png" alt="Ravana cultural tradition artwork" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="ravana-title">Ravana Tradition and Ancient Legends</h2>
+                <p>
+                    The story of King Ravana remains one of the most recognised legends connected with Sri Lanka's
+                    cultural memory. Across generations, traditions have preserved stories about Ravana as a powerful
+                    king associated with knowledge, music, medicine and advanced skills.
+                </p>
+                <p>
+                    While many aspects belong to mythology and oral tradition rather than confirmed historical records,
+                    the Ravana narrative continues to influence Sri Lankan arts, literature and cultural identity.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    BALANGODA
+    ======================================== -->
+    <section class="heritage-block alternate animate-on-scroll" aria-labelledby="balangoda-title">
+        <div class="container reverse">
+            <div class="heritage-image">
+                <img src="cul images/balangoda.png" alt="Balangoda prehistoric heritage" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="balangoda-title">Balangoda Heritage</h2>
+                <p>
+                    The discovery of prehistoric human remains associated with the Balangoda region provides important
+                    evidence about ancient human life in Sri Lanka.
+                </p>
+                <p>
+                    These findings reveal a long connection between humans, nature and the island environment, showing
+                    that Sri Lanka has been home to human communities for thousands of years.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    TIMELINE INTRO
+    ======================================== -->
+    <section class="timeline-intro animate-on-scroll" aria-labelledby="timeline-title">
+        <div class="container">
+            <h2 id="timeline-title">The Great Civilizations of Sri Lanka</h2>
+            <p>
+                Over centuries, Sri Lanka developed remarkable civilizations known for architecture, irrigation,
+                literature, art, spirituality and scientific knowledge.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+    ANURADHAPURA
+    ======================================== -->
+    <section class="heritage-block animate-on-scroll" aria-labelledby="anuradhapura-title">
+        <div class="container">
+            <div class="heritage-image">
+                <img src="cul images/anuradhapura.png" alt="Anuradhapura ancient kingdom" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="anuradhapura-title">Anuradhapura — The First Great Kingdom</h2>
+                <p>
+                    Anuradhapura represents one of the greatest civilizations of ancient Sri Lanka. For centuries, it
+                    became a centre of governance, spirituality, education, architecture and cultural development.
+                </p>
+                <p>
+                    The city was known for magnificent stupas, monasteries, advanced engineering and a deep
+                    connection between society and Buddhist philosophy.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    SIGIRIYA
+    ======================================== -->
+    <section class="heritage-block alternate animate-on-scroll" aria-labelledby="sigiriya-title">
+        <div class="container reverse">
+            <div class="heritage-image">
+                <img src="cul images/sigiriya.png" alt="Sigiriya rock fortress" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="sigiriya-title">Sigiriya — The Lion Rock Legacy</h2>
+                <p>
+                    Sigiriya is one of Sri Lanka's most iconic cultural landmarks. This ancient rock fortress
+                    demonstrates remarkable achievements in architecture, urban planning, water management and
+                    artistic expression.
+                </p>
+                <p>
+                    Its gardens, paintings and engineering concepts continue to attract researchers and visitors from
+                    around the world.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    POLONNARUWA
+    ======================================== -->
+    <section class="heritage-block animate-on-scroll" aria-labelledby="polonnaruwa-title">
+        <div class="container">
+            <div class="heritage-image">
+                <img src="cul images/polonnaruwa.png" alt="Polonnaruwa kingdom heritage" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="polonnaruwa-title">Polonnaruwa — A Centre of Knowledge and Art</h2>
+                <p>
+                    The Polonnaruwa Kingdom marked one of the greatest periods of Sri Lanka's medieval civilization,
+                    flourishing between the 11th and 13th centuries. Renowned for its remarkable architecture,
+                    advanced hydraulic engineering, exquisite stone sculptures, and well-planned urban design,
+                    the kingdom demonstrated exceptional innovation and administrative excellence.
+                </p>
+                <p>
+                    Sacred monuments such as the Gal Vihara, Lankatilaka Temple, and Parakrama Samudra continue to
+                    reflect the artistic brilliance, spiritual devotion, and engineering mastery that shaped
+                    Sri Lanka's enduring cultural heritage.
+                </p>
+                <p>
+                    Ancient temples, royal structures and artistic creations reflect the skill and creativity of the
+                    people of that era.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    BUDDHISM
+    ======================================== -->
+    <section class="heritage-block alternate animate-on-scroll" aria-labelledby="buddhism-title">
+        <div class="container reverse">
+            <div class="heritage-image">
+                <img src="cul images/buddhism.png" alt="Buddhist heritage in Sri Lanka" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="buddhism-title">Buddhism and Spiritual Heritage</h2>
+                <p>
+                    Buddhism has been the cornerstone of Sri Lanka's cultural identity for over two millennia, profoundly
+                    shaping its philosophy, art, architecture, education, and daily life.
+                </p>
+                <p><strong>How CWWRC embraces these cultural values:</strong></p>
+                <ul style="list-style:none;padding:0;margin:12px 0;">
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        <strong>Culturally Sensitive Interventions</strong> — We respect the historical and religious
+                        significance of the communities we serve across the island.
+                    </li>
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        <strong>Mindfulness &amp; Resilience</strong> — Meditative practices are integrated into our
+                        psycho-social support for disaster-affected communities.
+                    </li>
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        <strong>Compassion &amp; Harmony</strong> — The Buddhist principle of "May all beings live in
+                        peace" guides our humanitarian mission.
+                    </li>
+                </ul>
+                <p>
+                    Meditation, compassion, discipline and harmony with nature remain important elements within this
+                    spiritual heritage.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    IRRIGATION
+    ======================================== -->
+    <section class="heritage-block animate-on-scroll" aria-labelledby="irrigation-title">
+        <div class="container">
+            <div class="heritage-image">
+                <img src="cul images/irrigation.png" alt="Ancient irrigation systems" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="irrigation-title">The Ancient Irrigation Civilization</h2>
+                <p>
+                    Sri Lanka's ancient engineers created an advanced irrigation network of reservoirs, canals and water
+                    management systems that stands as one of the greatest engineering marvels in world history. This
+                    heritage is an integral part of our cultural identity.
+                </p>
+                <p><strong>Key Features:</strong></p>
+                <ul style="list-style:none;padding:0;margin:12px 0;">
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        <strong>Tank (Reservoir) Culture</strong> — Massive water reservoirs built during the
+                        Anuradhapura and Polonnaruwa eras (e.g., Tisa Wewa, Parakrama Samudraya)
+                    </li>
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        <strong>Canals &amp; Channels</strong> — Hundreds of miles of intricate water distribution
+                        networks
+                    </li>
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        <strong>Water Management</strong> — Sophisticated techniques for harvesting rainwater for
+                        agriculture and daily life
+                    </li>
+                </ul>
+                <p><strong>CWWRC and This Heritage:</strong></p>
+                <ul style="list-style:none;padding:0;margin:12px 0;">
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        In our disaster relief operations, we pay special attention to the condition and maintenance of
+                        these ancient water systems.
+                    </li>
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        Understanding this heritage is essential for protecting the livelihoods of farming communities in
+                        the dry zone.
+                    </li>
+                    <li style="padding:4px 0;padding-left:24px;position:relative;">
+                        <span style="position:absolute;left:0;color:#8b4513;">·</span>
+                        These ancient water management systems hold valuable lessons in sustainability that remain
+                        relevant today.
+                    </li>
+                </ul>
+                <p>
+                    These achievements demonstrate the island's historical knowledge of agriculture, engineering and
+                    sustainable living.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    AYURVEDA
+    ======================================== -->
+    <section class="heritage-block alternate animate-on-scroll" aria-labelledby="ayurveda-title">
+        <div class="container reverse">
+            <div class="heritage-image">
+                <img src="cul images/ayurveda.png" alt="Sri Lankan Ayurveda" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="ayurveda-title">Sri Lankan Ayurveda and Traditional Healing</h2>
+                <p>
+                    Sri Lanka has a long tradition of indigenous medicine based on herbs, natural resources and
+                    holistic approaches to wellbeing.
+                </p>
+                <p>
+                    Ayurveda represents a connection between human health, nature and traditional knowledge passed
+                    through generations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    ANGAMPORA
+    ======================================== -->
+    <section class="heritage-block animate-on-scroll" aria-labelledby="angampora-title">
+        <div class="container">
+            <div class="heritage-image">
+                <img src="cul images/angampora.png" alt="Angampora martial art" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="angampora-title">Angampora — Sri Lankan Martial Heritage</h2>
+                <p>
+                    Angampora is a traditional Sri Lankan martial art combining physical discipline, combat techniques,
+                    body conditioning and cultural values.
+                </p>
+                <p>
+                    It represents the warrior traditions and discipline that existed within Sri Lankan society for
+                    centuries.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    MEDITATION
+    ======================================== -->
+    <section class="heritage-block alternate animate-on-scroll" aria-labelledby="meditation-title">
+        <div class="container reverse">
+            <div class="heritage-image">
+                <img src="cul images/meditation.png" alt="Meditation tradition" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="meditation-title">Meditation and Inner Wisdom</h2>
+                <p>
+                    Meditation has been an important part of Sri Lankan spiritual traditions, focusing on awareness,
+                    discipline and mental development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    ARTS GRID
+    ======================================== -->
+    <section class="heritage-grid-section animate-on-scroll" aria-labelledby="arts-title">
+        <div class="container">
+            <h2 id="arts-title">Arts, Knowledge and Living Traditions</h2>
+            <div class="heritage-grid">
+                <article class="heritage-card">
+                    <img src="cul images/dance.png" alt="Traditional dance performance" loading="lazy">
+                    <h3>Traditional Dance</h3>
+                    <p>A rich performing art expressing stories, spiritual beliefs and cultural identity.</p>
+                </article>
+                <article class="heritage-card">
+                    <img src="cul images/ola.png" alt="Ola leaf manuscripts" loading="lazy">
+                    <h3>Ola Leaf Manuscripts</h3>
+                    <p>Ancient documentation of medicine, astrology, literature and knowledge.</p>
+                </article>
+                <article class="heritage-card">
+                    <img src="cul images/festivals.png" alt="Sri Lankan festivals" loading="lazy">
+                    <h3>Festivals and Traditions</h3>
+                    <p>Celebrations reflecting community, spirituality and cultural unity.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    TEA
+    ======================================== -->
+    <section class="heritage-block animate-on-scroll" aria-labelledby="tea-title">
+        <div class="container">
+            <div class="heritage-image">
+                <img src="cul images/tea.png" alt="Sri Lankan tea industry" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="tea-title">Nature, Tea and Global Identity</h2>
+                <p>
+                    Sri Lanka's landscapes, forests, wildlife and tea industry have created a unique identity recognised
+                    around the world.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    UNESCO
+    ======================================== -->
+    <section class="heritage-block alternate animate-on-scroll" aria-labelledby="unesco-title">
+        <div class="container reverse">
+            <div class="heritage-image">
+                <img src="cul images/unesco.png" alt="UNESCO World Heritage" loading="lazy">
+            </div>
+            <div class="heritage-text">
+                <h2 id="unesco-title">World Heritage of Sri Lanka</h2>
+                <p>
+                    Sri Lanka's ancient cities, natural environments and cultural landmarks continue to represent the
+                    island's outstanding contribution to world heritage.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    VISION
+    ======================================== -->
+    <section class="culture-vision animate-on-scroll" aria-labelledby="vision-title">
+        <div class="container">
+            <img src="cul images/modern.png" alt="Modern Sri Lanka" loading="lazy">
+            <h2 id="vision-title">Sri Lanka — Connecting Ancient Wisdom With The Future</h2>
+            <p>
+                Today, Sri Lanka continues to preserve its heritage while embracing modern research, innovation and
+                global cooperation.
+            </p>
+            <p>
+                Ceylon Wudang Wushu Research Centre aims to support the preservation, research and international
+                presentation of traditional knowledge, martial arts, Ayurveda and cultural wisdom.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+    FOOTER
+    ======================================== -->
+    <footer role="contentinfo">
+        <p>
+            © 2026 Ceylon Wudang Wushu Research Centre
+            <br>
+            Sri Lankan Cultural Heritage Research
+        </p>
+    </footer>
+
+    <!-- ========================================
+    BACK TO TOP BUTTON
+    ======================================== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- ========================================
+    SCRIPT
+    ======================================== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ========================================
+            // SCROLL ANIMATIONS
+            // ========================================
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(el => observer.observe(el));
+
+            // ========================================
+            // BACK TO TOP
+            // ========================================
+            const backBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backBtn.classList.add('visible');
+                } else {
+                    backBtn.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            backBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ========================================
+            // LAZY LOADING FALLBACK
+            // ========================================
+            if ('loading' in HTMLImageElement.prototype) {
+                // Native lazy loading supported
+            } else {
+                // Fallback: load all images
+                document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                    img.src = img.src;
+                });
+            }
+
+            // ========================================
+            // KEYBOARD ACCESSIBILITY
+            // ========================================
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    // Close any open modals if they exist
+                }
+            });
+
+            // ========================================
+            // CONSOLE WELCOME
+            // ========================================
+            console.log('🏛️ Sri Lankan Cultural Heritage');
+            console.log('📚 Ceylon Wudang Wushu Research Centre');
+            console.log('🌿 "Preserving wisdom, building the future"');
+
+        })();
+    </script>
 
 </body>
-
 </html>
